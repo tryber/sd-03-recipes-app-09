@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import RecipesContext from '../contexts/RecipesContext';
 
-const { setDrinksData } = useContext(RecipesContext);
+const { setDrinksData, setDrinksCategories } = useContext(RecipesContext);
 
 export const fetchDrinks = () => fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=')
   .then((response) => response.json())
@@ -27,7 +27,7 @@ export const fetchDrinkByFirstLetter = (firstLetter) => {
 
 export const fetchDrinkCategories = () => fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list')
   .then((response) => response.json())
-  .then((result) => console.log('Drinks fetch 2', result));
+  .then((result) => setDrinksCategories(result));
 
 export const fetchDrinksByCategory = (category) => fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`)
   .then((response) => response.json())

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import RecipesContext from '../contexts/RecipesContext';
 
-const { setMealsData } = useContext(RecipesContext);
+const { setMealsData, setMealsCategories } = useContext(RecipesContext);
 
 export const fetchMeals = () => fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=')
   .then((response) => response.json())
@@ -21,7 +21,7 @@ export const fetchMealByFirstLetter = (firstLetter) => fetch(`https://www.themea
 
 export const fetchMealCategories = () => fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list')
   .then((response) => response.json())
-  .then((result) => console.log(result));
+  .then((result) => setMealsCategories(result));
 
 export const fetchMealsByCategory = (category) => fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
   .then((response) => response.json())
