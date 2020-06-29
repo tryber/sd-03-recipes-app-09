@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function SearchBarForm({ inputText, onInputChange, setSelectedRadio, onClick }) {
   return (
@@ -53,6 +54,13 @@ function SearchBarForm({ inputText, onInputChange, setSelectedRadio, onClick }) 
       </div>
     </form>
   );
+}
+
+SearchBarForm.propTypes = {
+  inputText: PropTypes.string.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  setSelectedRadio: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 }
 
 export default SearchBarForm;
