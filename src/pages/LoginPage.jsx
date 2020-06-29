@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Footer from '../components/Footer';
 
 const setLocalStorage = (email) => {
   localStorage.setItem('mealsToken', 1);
@@ -33,7 +34,7 @@ const LoginPage = () => {
         id="password"
         onChange={(e) => setPassword(e.target.value)}
       />
-      <Link to='/comidas'>
+      <Link to="/comidas">
         <button
           type="submit"
           disabled={!validEmail(email) || password.length < 6}
