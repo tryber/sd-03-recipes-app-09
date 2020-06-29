@@ -5,6 +5,7 @@ function SearchBarForm({ inputText, onInputChange, setSelectedRadio, onClick }) 
     <form>
       <div>
         <input
+          data-testid="search-input"
           type="text"
           value={inputText}
           onChange={(event) => onInputChange(event.target.value)}
@@ -13,6 +14,7 @@ function SearchBarForm({ inputText, onInputChange, setSelectedRadio, onClick }) 
       <div>
         <label htmlFor="ingredients">
           <input
+            data-testid="ingredient-search-radio"
             type="radio"
             id="ingredients"
             name="search"
@@ -23,6 +25,7 @@ function SearchBarForm({ inputText, onInputChange, setSelectedRadio, onClick }) 
         </label>
         <label htmlFor="name">
           <input
+            data-testid="name-search-radio"
             type="radio"
             id="name"
             name="search"
@@ -33,6 +36,7 @@ function SearchBarForm({ inputText, onInputChange, setSelectedRadio, onClick }) 
         </label>
         <label htmlFor="first-letter">
           <input
+            data-testid="first-letter-search-radio"
             type="radio"
             id="first-letter"
             name="search"
@@ -43,7 +47,7 @@ function SearchBarForm({ inputText, onInputChange, setSelectedRadio, onClick }) 
         </label>
       </div>
       <div>
-        <button type="button" onClick={onClick}>
+        <button data-testid="exec-search-btn" type="button" onClick={onClick}>
           Buscar
         </button>
       </div>
