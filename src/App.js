@@ -10,7 +10,7 @@ import ExplorePage from './pages/ExplorePage';
 function App() {
   return (
     <Switch>
-      <Route path="/explorar/comidas/ingredientes" component={ExplorePage} />
+      <Route path="/explorar/comidas/ingredientes" component="" />
       <Route path="/explorar/comidas/area" component="" />
       <Route path="/explorar/bebidas/ingredientes" component="" />
       <Route path="/comidas/:id/in-progress" component="" />
@@ -23,7 +23,7 @@ function App() {
       <Route path="/receitas-favoritas" component="" />
       <Route path="/comidas" component={MealsPage} />
       <Route path="/bebidas" component={DrinksPage} />
-      <Route path="/explorar" component="" />
+      <Route path="/explorar" component={ExplorePage} />
       <Route path="/perfil" component={ProfilePage} />
       <Route exact path="/" component={LoginPage} />
     </Switch>
