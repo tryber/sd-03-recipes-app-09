@@ -11,3 +11,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.header {
+  background-color: azure;
+  color: black;
+  min-height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.header-title {
+  text-transform: capitalize;
+}
+
+.searchbar {
+  position: absolute;
+  top: 56px;
+  left: 0;
+  background-color: aquamarine;
+  min-height: 50px;
+  width: 100%;
+}
