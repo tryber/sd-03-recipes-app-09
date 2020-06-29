@@ -12,9 +12,9 @@ function Header() {
     const { pathname } = useLocation();
     const [toggleSearchBar, setToggleSearchBar] = useState(false);
 
-    const formatPathName = (pathname) => {
-      return patterns.find((patternEntry) => patternEntry.path === pathname);
-    };
+    const formatPathName = (path) => (
+      patterns.find((patternEntry) => patternEntry.path === path);
+    );
 
     const { title } = formatPathName(pathname);
 
@@ -40,7 +40,7 @@ function Header() {
           <img src={profileIcon} alt="Ícone de perfil" />
         </Link>
         <p className="header-title">{title}</p>
-        <button 
+        <button
           type="button"
           data-testid="search-top-btn"
           onClick={() => setToggleSearchBar(!toggleSearchBar)}
