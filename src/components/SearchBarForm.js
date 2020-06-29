@@ -61,6 +61,6 @@ SearchBarForm.propTypes = {
   onInputChange: PropTypes.func.isRequired,
   setSelectedRadio: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
-}
+};
 
 export default SearchBarForm;

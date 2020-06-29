@@ -31,6 +31,6 @@ function SearchBar() {
   };
 
   return <SearchBarForm {...props} />;
-};
+}
 
 export default SearchBar;

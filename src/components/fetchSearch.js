@@ -2,19 +2,19 @@ import {
   fetchMealByIngredient,
   fetchMealByRecipeName,
   fetchMealByFirstLetter,
-} from "../services/ServiceMeal";
+} from '../services/ServiceMeal';
 import {
   fetchDrinkByIngredient,
   fetchDrinkByRecipeName,
   fetchDrinkByFirstLetter,
-} from "../services/ServiceDrinks";
+} from '../services/ServiceDrinks';
 
 export const fetchMeals = (setMealsData, selectedRadio, inputText) => {
-  if (selectedRadio === "Ingredientes") {
+  if (selectedRadio === 'Ingredientes') {
     return fetchMealByIngredient(inputText).then(({ meals }) =>
       setMealsData(meals),
     );
-  } else if (selectedRadio === "Nome") {
+  } else if (selectedRadio === 'Nome') {
     return fetchMealByRecipeName(inputText).then(({ meals }) =>
       setMealsData(meals),
     );
@@ -25,11 +25,11 @@ export const fetchMeals = (setMealsData, selectedRadio, inputText) => {
 };
 
 export const fetchDrinks = (setDrinksData, selectedRadio, inputText) => {
-  if (selectedRadio === "Ingredientes") {
+  if (selectedRadio === 'Ingredientes') {
     return fetchDrinkByIngredient(inputText).then(({ drinks }) =>
       setDrinksData(drinks),
     );
-  } else if (selectedRadio === "Nome") {
+  } else if (selectedRadio === 'Nome') {
     return fetchDrinkByRecipeName(inputText).then(({ drinks }) =>
       setDrinksData(drinks),
     );
