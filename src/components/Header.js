@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
+
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
+import { patterns, forbiddenPlacesForSearchBar } from '../data/Data';
+
 import SearchBar from './SearchBar';
 
 function Header() {
@@ -10,35 +13,10 @@ function Header() {
     const [toggleSearchBar, setToggleSearchBar] = useState(false);
 
     const formatPathName = (pathname) => {
-      const patterns = [
-        { path: '/comidas', title: 'Comidas' },
-        { path: '/bebidas', title: 'Bebidas' },
-        { path: '/explorar', title: 'Explorar' },
-        { path: '/explorar/comidas', title: 'Explorar Comidas' },
-        { path: '/explorar/bebidas', title: 'Explorar Bebidas' },
-        { path: '/explorar/comidas/ingredientes', title: 'Explorar Ingredientes' },
-        { path: '/explorar/bebidas/ingredientes', title: 'Explorar Ingredientes' },
-        { path: '/explorar/comidas/area', title: 'Explorar Origem' },
-        { path: '/perfil', title: 'Perfil' },
-        { path: '/receitas-feitas', title: 'Receitas Feitas' },
-        { path: '/receitas-favoritas', title: 'Receitas Favoritas' },
-      ];
-
       return patterns.find((patternEntry) => patternEntry.path === pathname);
     };
 
     const { title } = formatPathName(pathname);
-
-    const forbiddenPlacesForSearchBar = [
-      '/perfil',
-      '/receitas-favoritas',
-      '/receitas-feitas',
-      '/explorar',
-      '/explorar/comidas/ingredientes',
-      '/explorar/bebidas/ingredientes',
-      '/explorar/comidas',
-      '/explorar/bebidas',
-    ];
 
     const checkForbidden = forbiddenPlacesForSearchBar.some(
       (place) => place === pathname,
