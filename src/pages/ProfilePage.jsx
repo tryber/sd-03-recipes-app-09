@@ -7,7 +7,7 @@ function ProfilePage() {
       <Header />
       <p>Tela de Profile</p>
     </div>
-  )
+  );
 }
 
 export default ProfilePage;

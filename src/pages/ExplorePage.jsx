@@ -7,7 +7,7 @@ function ExplorePage() {
       <Header />
       <p>tela de explorar</p>
     </div>
-  )
+  );
 }
 
 export default ExplorePage;
