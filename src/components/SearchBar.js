@@ -1,64 +1,37 @@
-import React, { useContext, useState } from 'react';
-import RecipesContext from '../contexts/RecipesContext';
-import { fetchMeals, fetchDrinks } from './fetchSearch';
+import React, { useContext, useState } from "react";
+import { useLocation } from "react-router-dom";
+import RecipesContext from "../contexts/RecipesContext";
+import { fetchMeals, fetchDrinks } from "./fetchSearch";
+import SearchBarForm from './SearchBarForm';
 
-function SearchBar({ path }) {
-  const { setMealsData, setDrinkData } = useContext(RecipesContext);
+function SearchBar() {
+  const {setMealsData, setDrinksData } = useContext(
+    RecipesContext
+  );
   const [selectedRadio, setSelectedRadio] = useState(null);
-  const [inputText, setInputText] = useState('');
+  const [inputText, setInputText] = useState("");
+  const { pathname } = useLocation();
 
   const onClick = () => {
-    if (path === '/comidas') return fetchMeals(setMealsData, selectedRadio, inputText);
-    return fetchDrinks(setDrinkData, selectedRadio, inputText);
+    if (pathname === "/comidas")
+      return fetchMeals(setMealsData, selectedRadio, inputText);
+    return fetchDrinks(setDrinksData, selectedRadio, inputText);
   };
 
-  return (
-    <form>
-      <div>
-        <input
-          type="text"
-          onChange={(event) => setInputText(event.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="ingredients">
-          <input
-            type="radio"
-            id="ingredients"
-            name="search"
-            value="Ingredientes"
-            onClick={(event) => setSelectedRadio(event.target.value)}
-          />
-          Ingredientes
-        </label>
-        <label htmlFor="name">
-          <input
-            type="radio"
-            id="name"
-            name="search"
-            value="Nome"
-            onClick={(event) => setSelectedRadio(event.target.value)}
-          />
-          Nome
-        </label>
-        <label htmlFor="first-letter">
-          <input
-            type="radio"
-            id="first-letter"
-            name="search"
-            value="Primeira letra"
-            onClick={(event) => setSelectedRadio(event.target.value)}
-          />
-          Primeira letra
-        </label>
-      </div>
-      <div>
-        <button type="button" onClick={onClick}>
-          Buscar
-        </button>
-      </div>
-    </form>
-  );
+  const onInputChange = (event) => {
+    if (event.length > 1 && selectedRadio === "Primeira letra")
+      alert("Sua busca deve conter somente 1 (um) caracter");
+    return setInputText(event);
+  };
+
+  const props = {
+    inputText,
+    onInputChange,
+    setSelectedRadio,
+    onClick,
+  }
+
+  return <SearchBarForm {...props} />
 }
 
 export default SearchBar;
