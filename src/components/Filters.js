@@ -1,19 +1,19 @@
 import React, { useEffect, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
-import { fetchMealCategories, fetchMealsByCategory } from '../services/ServiceMeal';
-import { fetchDrinkCategories, fetchDrinksByCategory } from '../services/ServiceDrinks';
+import { fetchMealCategories, fetchMealsByCategory, fetchMeals } from '../services/ServiceMeal';
+import { fetchDrinkCategories, fetchDrinksByCategory, fetchDrinks } from '../services/ServiceDrinks';
 import RecipesContext from '../contexts/RecipesContext';
 
 const Filters = () => {
   const {
-    mealsData,
     setMealsData,
-    drinksData,
     setDrinksData,
     mealsCategories,
     setMealsCategories,
     drinkCategories,
     setDrinksCategories,
+    selectedCategory,
+    setSelectedCategory,
   } = useContext(RecipesContext);
   const { pathname } = useLocation();
 
@@ -26,22 +26,41 @@ const Filters = () => {
       .then((response) => setMealsCategories(response.meals));
   }, []);
 
+  const disableFilters = () => {
+    if (pathname === '/bebidas') {
+      return fetchDrinks()
+        .then((result) => setDrinksData(result.drinks));
+    }
+    return fetchMeals()
+      .then((result) => setMealsData(result.meals));
+  };
+
   const filterDataByCategory = (category) => {
     if (pathname === '/bebidas') {
+      if (category === selectedCategory) {
+        setSelectedCategory('All');
+        return disableFilters();
+      }
       return fetchDrinksByCategory(category)
-        .then((result) => setMealsData(result.drinks));
+        .then((result) => setDrinksData(result.drinks))
+        .then(() => setSelectedCategory(category));
+    }
+    if (category === selectedCategory) {
+      setSelectedCategory('All');
+      return disableFilters();
     }
     return fetchMealsByCategory(category)
-      .then((result) => setDrinksData(result.meals));
+      .then((result) => setMealsData(result.meals))
+      .then(() => setSelectedCategory(category));
   };
 
   const renderFilterButtons = (categories) => {
     if (categories.length === 0) return null;
     return (
       <div>
-        <button type="button">All</button>
+        <button onClick={disableFilters} type="button">All</button>
         {categories.map((category, i) => {
-          if (i > 5) return null;
+          if (i > 4) return null;
           return (
             <button
               data-testid={`${category.strCategory}-category-filter`}
