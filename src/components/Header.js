@@ -13,7 +13,7 @@ function Header() {
     const [toggleSearchBar, setToggleSearchBar] = useState(false);
 
     const formatPathName = (path) => (
-      patterns.find((patternEntry) => patternEntry.path === path);
+      patterns.find((patternEntry) => patternEntry.path === path)
     );
 
     const { title } = formatPathName(pathname);
