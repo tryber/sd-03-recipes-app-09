@@ -25,7 +25,6 @@ function App() {
       <Route path="/perfil" component="" />
       <Route exact path="/" component={LoginPage} />
     </Switch>
-
   );
 }
 
