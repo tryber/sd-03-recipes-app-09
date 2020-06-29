@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import { useLocation, Link } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
-import { useLocation, Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
 
 function Header() {
@@ -15,7 +15,7 @@ function Header() {
         { path: '/bebidas', title: 'Bebidas' },
         { path: '/explorar', title: 'Explorar' },
         { path: '/explorar/comidas', title: 'Explorar Comidas' },
-        { path: '/explorar/bebidas', title: 'Explorar Bebidas'},
+        { path: '/explorar/bebidas', title: 'Explorar Bebidas' },
         { path: '/explorar/comidas/ingredientes', title: 'Explorar Ingredientes' },
         { path: '/explorar/bebidas/ingredientes', title: 'Explorar Ingredientes' },
         { path: '/explorar/comidas/area', title: 'Explorar Origem' },
@@ -58,11 +58,12 @@ function Header() {
 
     return (
       <div className="header">
-      <Link to="/perfil">
+        <Link to="/perfil">
           <img src={profileIcon} alt="Ícone de perfil" />
         </Link>
         <p className="header-title">{title}</p>
-        <button type="button"
+        <button 
+          type="button"
           data-testid="search-top-btn"
           onClick={() => setToggleSearchBar(!toggleSearchBar)}
         >
