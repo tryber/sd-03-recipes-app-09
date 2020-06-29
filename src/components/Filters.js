@@ -20,21 +20,21 @@ const Filters = () => {
   const {
     mealsCategories,
     setMealsCategories,
-    drinksCategories,
+    drinkCategories,
     setDrinksCategories,
   } = useContext(RecipesContext);
   const { pathname } = useLocation();
   useEffect(() => {
     if (pathname === '/bebidas') {
       fetchDrinkCategories()
-        .then((response) => console.log(response));
+        .then((response) => setDrinksCategories(response.drinks));
     }
     fetchMealCategories().then((response) => setMealsCategories(response.meals));
   }, []);
 
   return (
     <div>
-      {console.log(drinksCategories)}
+      {renderFilterButtons(pathname === '/comidas' ? mealsCategories : drinkCategories)}
     </div>
   );
 };

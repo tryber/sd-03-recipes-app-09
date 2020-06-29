@@ -1,8 +1,9 @@
 import React from 'react';
+import Filters from '../components/Filters';
 
 const DrinksPage = () => (
   <h1>
-    DrinksPage
+    <Filters />
   </h1>
 );
 
