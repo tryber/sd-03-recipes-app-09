@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from 'react';
+import { useRouteMatch } from 'react-router-dom';
 import { fetchMealCategories } from '../services/ServiceMeal';
 import { fetchDrinkCategories } from '../services/ServiceDrinks';
 import RecipesContext from '../contexts/RecipesContext';
@@ -17,13 +18,13 @@ const renderFilterButtons = ({ categories }) => {
 
 const Filters = () => {
   const { mealsCategories, drinksCategories } = useContext(RecipesContext);
+  const { match: { url } } = useRouteMatch();
   useEffect(() => {
-
   }, []);
 
   return (
     <div>
-      {console.log(mealsCategories)}
+      {url}
     </div>
   );
 };
