@@ -18,8 +18,9 @@ function SearchBar() {
   };
 
   const onInputChange = (event) => {
-    if (event.length > 1 && selectedRadio === 'Primeira letra')
+    if (event.length > 1 && selectedRadio === 'Primeira letra') {
       alert('Sua busca deve conter somente 1 (um) caracter');
+    }
     return setInputText(event);
   };
 
