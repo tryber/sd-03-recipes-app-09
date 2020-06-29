@@ -4,11 +4,13 @@ import './App.css';
 import LoginPage from './pages/LoginPage';
 import MealsPage from './pages/MealsPage';
 import DrinksPage from './pages/DrinksPage';
+import ProfilePage from './pages/ProfilePage';
+import ExplorePage from './pages/ExplorePage';
 
 function App() {
   return (
     <Switch>
-      <Route path="/explorar/comidas/ingredientes" component="" />
+      <Route path="/explorar/comidas/ingredientes" component={ExplorePage} />
       <Route path="/explorar/comidas/area" component="" />
       <Route path="/explorar/bebidas/ingredientes" component="" />
       <Route path="/comidas/:id/in-progress" component="" />
@@ -22,10 +24,9 @@ function App() {
       <Route path="/comidas" component={MealsPage} />
       <Route path="/bebidas" component={DrinksPage} />
       <Route path="/explorar" component="" />
-      <Route path="/perfil" component="" />
+      <Route path="/perfil" component={ProfilePage} />
       <Route exact path="/" component={LoginPage} />
     </Switch>
-
   );
 }
 
