@@ -21,6 +21,7 @@ const LoginPage = () => {
       <input
         placeholder="Email"
         type="email"
+        data-testid="email-input"
         required
         id="email"
         onChange={(e) => setEmail(e.target.value)}
@@ -29,6 +30,7 @@ const LoginPage = () => {
       <input
         placeholder="Password"
         type="password"
+        data-testid="password-input"
         required
         id="password"
         onChange={(e) => setPassword(e.target.value)}
@@ -36,6 +38,7 @@ const LoginPage = () => {
       <Link to="/comidas">
         <button
           type="submit"
+          data-testid="login-submit-btn"
           disabled={!validEmail(email) || password.length < 6}
           onClick={() => setLocalStorage(email)}
         >

@@ -7,17 +7,29 @@ import exploreIcon from '../images/exploreIcon.svg';
 export class Footer extends Component {
   render() {
     return (
-      <div>
-        <Link to="/explorar/comidas">
-          <img src={mealIcon} alt="Ícone de perfil" />
+      <footer data-testid="footer">
+        <Link to="/explorar/bebidas">
+          <img
+            src={drinkIcon}
+            alt="Ícone de perfil"
+            data-testid="drinks-bottom-btn"
+          />
         </Link>
         <Link to="/explorar">
-          <img src={exploreIcon} alt="Ícone de perfil" />
+          <img
+            src={exploreIcon}
+            alt="Ícone de perfil"
+            data-testid="explore-bottom-btn"
+          />
         </Link>
-        <Link to="/explorar/bebidas">
-          <img src={drinkIcon} alt="Ícone de perfil" />
+        <Link to="/explorar/comidas">
+          <img
+            src={mealIcon}
+            alt="Ícone de perfil"
+            data-testid="food-bottom-btn"
+          />
         </Link>
-      </div>
+      </footer>
     );
   }
 }
