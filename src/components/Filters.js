@@ -4,13 +4,33 @@ import { fetchMealCategories } from '../services/ServiceMeal';
 import { fetchDrinkCategories } from '../services/ServiceDrinks';
 import RecipesContext from '../contexts/RecipesContext';
 
+const renderFilterButtons = (categories, handler) => {
+  if (categories.length === 0) return null;
+  return (
+    <div>
+      <button onClick={(e) => handler(e.target.value)} type="button">All</button>
+      {categories.map((category, i) => (
+        i > 4 ? null
+          : (
+            <button
+              data-testid={`${category.strCategory}-category-filter`}
+              type="button"
+              value={category.strCategory}
+              onClick={(e) => handler(e.target.value)}
+            >
+              {category.strCategory}
+            </button>
+          )))}
+    </div>
+  );
+};
+
 const Filters = () => {
   const {
     mealsCategories,
     setMealsCategories,
     drinkCategories,
     setDrinksCategories,
-    selectedCategory,
     setSelectedCategory,
   } = useContext(RecipesContext);
   const { pathname } = useLocation();
@@ -24,33 +44,11 @@ const Filters = () => {
       .then((response) => setMealsCategories(response.meals));
   }, []);
 
-  const renderFilterButtons = (categories) => {
-    if (categories.length === 0) return null;
-    return (
-      <div>
-        <button onClick={(e) => setSelectedCategory(e.target.value)} type="button">All</button>
-        {categories.map((category, i) => {
-          if (i > 4) return null;
-          return (
-            <button
-              data-testid={`${category.strCategory}-category-filter`}
-              type="button"
-              value={category.strCategory}
-              onClick={(e) => setSelectedCategory(e.target.value)}
-            >
-              {category.strCategory}
-            </button>
-          );
-        })}
-      </div>
-    );
-  };
-
   return (
     <div>
-      {renderFilterButtons(pathname === '/comidas'
-        ? mealsCategories : drinkCategories)}
-      {console.log(selectedCategory)}
+      {pathname === '/comidas'
+        ? renderFilterButtons(mealsCategories, setSelectedCategory)
+        : renderFilterButtons(drinkCategories, setSelectedCategory)}
     </div>
   );
 };
