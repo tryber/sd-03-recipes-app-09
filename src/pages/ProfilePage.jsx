@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const user = localStorage.getItem('user');
 
 const ProfilePage = () => (
   <div>
+    <Header />
     <h1>ProfilePage</h1>
     <h2>{user}</h2>
     <Link to="/receitas-favoritas">
