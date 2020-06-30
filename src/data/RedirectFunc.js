@@ -11,14 +11,14 @@ function RedirectFunc({ id }) {
 
   if (pathname.includes('/bebidas')) {
     fetchDrinksById(id).then(({ drinks }) => setDrinksData(drinks));
-    return <Redirect to={`/bebidas/${id}`} />
-  } 
+    return <Redirect to={`/bebidas/${id}`} />;
+  }
   fetchMealsById(id).then(({ meals }) => setMealsData(meals));
-  return <Redirect to={`/comidas/${id}`} />
+  return <Redirect to={`/comidas/${id}`} />;
 }
 
 RedirectFunc.propTypes = {
   id: PropTypes.number.isRequired,
-}
+};
 
 export default RedirectFunc;
