@@ -1,11 +1,14 @@
 import React from 'react';
+import Header from '../components/Header';
 import Footer from '../components/Footer';
 
+
 const MealsPage = () => (
-  <h1>
-    MealsPage
+  <div>
+    <Header />
+    <p>Tela de Comidas</p>
     <Footer />
-  </h1>
+  </div>
 );
 
 export default MealsPage;
