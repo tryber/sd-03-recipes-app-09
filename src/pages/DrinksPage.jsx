@@ -1,9 +1,10 @@
 import React from 'react';
-import Filters from '../components/Filters';
+import Footer from '../components/Footer';
 
 const DrinksPage = () => (
   <h1>
-    <Filters />
+    DrinksPage
+    <Footer />
   </h1>
 );
 
