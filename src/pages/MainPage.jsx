@@ -10,7 +10,7 @@ import { fetchDrinks } from "../services/ServiceDrinks";
 import RedirectFunc from "../data/RedirectFunc";
 
 const MealsPage = () => {
-  const { mealsData, setMealsData, drinksData, setDrinksData } = useContext(
+  const { mealsData, setMealsData, drinksData, setDrinksData, toggleSearchBar } = useContext(
     RecipesContext
   );
   const { pathname } = useLocation();
@@ -20,7 +20,14 @@ const MealsPage = () => {
       fetchDrinks().then(({ drinks }) => setDrinksData(drinks));
     }
     fetchMeals().then(({ meals }) => setMealsData(meals));
-  }, [mealsData, drinksData]);
+  }, []);
+
+  useEffect(() => {
+    if (pathname === "/bebidas") {
+      fetchDrinks().then(({ drinks }) => setDrinksData(drinks));
+    }
+    fetchMeals().then(({ meals }) => setMealsData(meals));
+  }, [toggleSearchBar]);
 
   const getRecipesCards = () => {
     if (pathname === "/comidas" && mealsData) {
