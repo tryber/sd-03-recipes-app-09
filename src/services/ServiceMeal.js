@@ -1,36 +1,47 @@
-import { useContext } from 'react';
-import RecipesContext from '../contexts/RecipesContext';
+export const fetchMeals = async () => {
+  const request = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
+  const json = await request.json();
+  return json;
+};
 
-const { setMealsData, setMealsCategories } = useContext(RecipesContext);
+export const fetchMealByIngredient = async (ingredient) => {
+  const request = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`);
+  const json = await request.json();
+  return json;
+};
 
-export const fetchMeals = () => fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=')
-  .then((response) => response.json())
-  .then((result) => setMealsData(result));
+export const fetchMealByRecipeName = async (recipeName) => {
+  const request = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${recipeName}`);
+  const json = await request.json();
+  return json;
+};
 
-export const fetchMealByIngredient = (ingredient) => fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`)
-  .then((response) => response.json())
-  .then((result) => setMealsData(result));
+export const fetchMealByFirstLetter = async (firstLetter) => {
+  const request = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${firstLetter}`);
+  const json = await request.json();
+  return json;
+};
 
-export const fetchMealByRecipeName = (recipeName) => fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${recipeName}`)
-  .then((response) => response.json())
-  .then((result) => setMealsData(result));
+export const fetchMealCategories = async () => {
+  const request = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list');
+  const json = await request.json();
+  return json;
+};
 
-export const fetchMealByFirstLetter = (firstLetter) => fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${firstLetter}`)
-  .then((response) => response.json())
-  .then((result) => setMealsData(result));
+export const fetchMealsByCategory = async (category) => {
+  const request = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
+  const json = await request.json();
+  return json;
+};
 
-export const fetchMealCategories = () => fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list')
-  .then((response) => response.json())
-  .then((result) => setMealsCategories(result));
+export const fetchMealById = async (id) => {
+  const request = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
+  const json = await request.json();
+  return json;
+};
 
-export const fetchMealsByCategory = (category) => fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
-  .then((response) => response.json())
-  .then((result) => setMealsData(result));
-
-export const fetchMealById = (id) => fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
-  .then((response) => response.json())
-  .then((result) => console.log('Meals fetch 3', result));
-
-export const fetchRandomMeal = () => fetch('https://www.themealdb.com/api/json/v1/1/random.php')
-  .then((response) => response.json())
-  .then((result) => console.log('Meals fetch 7', result));
+export const fetchRandomMeal = async () => {
+  const request = await fetch('https://www.themealdb.com/api/json/v1/1/random.php');
+  const json = await request.json();
+  return json;
+};
