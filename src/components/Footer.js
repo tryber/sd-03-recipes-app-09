@@ -8,7 +8,7 @@ export class Footer extends Component {
   render() {
     return (
       <footer data-testid="footer">
-        <Link to="/explorar/bebidas">
+        <Link to="/bebidas">
           <img
             src={drinkIcon}
             alt="Ícone de perfil"
@@ -22,7 +22,7 @@ export class Footer extends Component {
             data-testid="explore-bottom-btn"
           />
         </Link>
-        <Link to="/explorar/comidas">
+        <Link to="/comidas">
           <img
             src={mealIcon}
             alt="Ícone de perfil"
