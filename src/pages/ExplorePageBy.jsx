@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useLocation, Link, useHistory } from 'react-router-dom';
-import RecipesContext from '../contexts/RecipesContext';
 
 import { fetchRandomDrink } from '../services/ServiceDrinks';
 import { fetchRandomMeal } from '../services/ServiceMeal';
@@ -17,7 +16,7 @@ function ExplorePageBy() {
   const verifyRouteByIngredients = () => {
     if (pathname === '/explorar/comidas') return '/explorar/comidas/ingredientes';
     return '/explorar/bebidas/ingredientes';
-  }
+  };
 
   const surpriseFunction = () => {
     if (pathname === '/explorar/comidas') {
@@ -26,18 +25,18 @@ function ExplorePageBy() {
         .then((meal) => {
           const data = meal.meals[0];
           // setMealsData([data]);
-          history.push(`/comidas/${data.idMeal}`)
-        })
+          history.push(`/comidas/${data.idMeal}`);
+        });
     } else {
       const randomDrink = fetchRandomDrink();
       randomDrink
         .then((drink) => {
           const data = drink.drinks[0];
           // setDrinksData([data])
-          history.push(`/comidas/${data.idDrink}`)
-        })
+          history.push(`/comidas/${data.idDrink}`);
+        });
     }
-  }
+  };
 
   return (
     <div>
@@ -54,7 +53,7 @@ function ExplorePageBy() {
       </div>
       <Footer />
     </div>
-  )
+  );
 }
 
 export default ExplorePageBy;
