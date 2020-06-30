@@ -8,24 +8,26 @@ import ExplorePage from './pages/ExplorePage';
 
 function App() {
   return (
-    <Switch>
-      <Route path="/explorar/comidas/ingredientes" component="" />
-      <Route path="/explorar/comidas/area" component="" />
-      <Route path="/explorar/bebidas/ingredientes" component="" />
-      <Route path="/comidas/:id/in-progress" component="" />
-      <Route path="/bebidas/:id/in-progress" component="" />
-      <Route path="/comidas/:id" component="" />
-      <Route path="/bebidas/:id" component="" />
-      <Route path="/explorar/comidas" component="" />
-      <Route path="/explorar/bebidas" component="" />
-      <Route path="/receitas-feitas" component="" />
-      <Route path="/receitas-favoritas" component="" />
-      <Route path="/comidas" component={MainPage} />
-      <Route path="/bebidas" component={MainPage} />
-      <Route path="/explorar" component={ExplorePage} />
-      <Route path="/perfil" component={ProfilePage} />
-      <Route exact path="/" component={LoginPage} />
-    </Switch>
+    <center>
+      <Switch>
+        <Route path='/explorar/comidas/ingredientes' component='' />
+        <Route path='/explorar/comidas/area' component='' />
+        <Route path='/explorar/bebidas/ingredientes' component='' />
+        <Route path='/comidas/:id/in-progress' component='' />
+        <Route path='/bebidas/:id/in-progress' component='' />
+        <Route path='/comidas/:id' component='' />
+        <Route path='/bebidas/:id' component='' />
+        <Route path='/explorar/comidas' component='' />
+        <Route path='/explorar/bebidas' component='' />
+        <Route path='/receitas-feitas' component='' />
+        <Route path='/receitas-favoritas' component='' />
+        <Route path='/comidas' component={MainPage} />
+        <Route path='/bebidas' component={MainPage} />
+        <Route path='/explorar' component={ExplorePage} />
+        <Route path='/perfil' component={ProfilePage} />
+        <Route exact path='/' component={LoginPage} />
+      </Switch>
+    </center>
   );
 }
 

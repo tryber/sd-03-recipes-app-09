@@ -16,13 +16,13 @@ export const fetchDrinksByRecipeName = async (recipeName) => {
   return json;
 };
 export const fetchDrinksByFirstLetter = async (firstLetter) => {
-  const request = fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${firstLetter}`);
+  const request = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${firstLetter}`);
   const json = await request.json();
   return json;
 };
 
 export const fetchDrinksCategories = async () => {
-  const request = fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list');
+  const request = await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list');
   const json = await request.json();
   return json;
 };
