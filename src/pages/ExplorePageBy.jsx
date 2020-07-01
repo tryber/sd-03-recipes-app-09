@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLocation, Link, useHistory } from 'react-router-dom';
 
+import RecipesContext from '../contexts/RecipesContext';
 import { fetchRandomDrink } from '../services/ServiceDrinks';
-import { fetchRandomMeal } from '../services/ServiceMeal';
+import { fetchRandomMeal } from '../services/ServiceMeals';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -10,8 +11,8 @@ import Footer from '../components/Footer';
 
 function ExplorePageBy() {
   const { pathname } = useLocation();
-  // const { setMealsData, mealsData, setDrinksData } = useContext(RecipesContext);
   const history = useHistory();
+  const { setMealsData, setDrinksData } = useContext(RecipesContext);
 
   const verifyRouteByIngredients = () => {
     if (pathname === '/explorar/comidas') return '/explorar/comidas/ingredientes';
@@ -21,18 +22,18 @@ function ExplorePageBy() {
   const surpriseFunction = () => {
     if (pathname === '/explorar/comidas') {
       const randomMeal = fetchRandomMeal();
-      randomMeal
+      return (randomMeal
         .then((meal) => {
           const data = meal.meals[0];
-          // setMealsData([data]);
+          setMealsData([data]);
           history.push(`/comidas/${data.idMeal}`);
-        });
+        }));
     } else {
       const randomDrink = fetchRandomDrink();
       randomDrink
         .then((drink) => {
           const data = drink.drinks[0];
-          // setDrinksData([data])
+          setDrinksData([data]);
           history.push(`/comidas/${data.idDrink}`);
         });
     }
