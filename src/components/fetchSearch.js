@@ -1,40 +1,40 @@
 import {
-  fetchMealByIngredient,
-  fetchMealByRecipeName,
-  fetchMealByFirstLetter,
-} from '../services/ServiceMeal';
+  fetchMealsByIngredient,
+  fetchMealsByRecipeName,
+  fetchMealsByFirstLetter,
+} from '../services/ServiceMeals';
 import {
-  fetchDrinkByIngredient,
-  fetchDrinkByRecipeName,
-  fetchDrinkByFirstLetter,
+  fetchDrinksByIngredient,
+  fetchDrinksByRecipeName,
+  fetchDrinksByFirstLetter,
 } from '../services/ServiceDrinks';
 
 export const fetchMeals = (setMealsData, selectedRadio, inputText) => {
   if (selectedRadio === 'Ingredientes') {
-    return fetchMealByIngredient(inputText).then(({ meals }) =>
+    return fetchMealsByIngredient(inputText).then(({ meals }) =>
       setMealsData(meals),
     );
   } else if (selectedRadio === 'Nome') {
-    return fetchMealByRecipeName(inputText).then(({ meals }) =>
+    return fetchMealsByRecipeName(inputText).then(({ meals }) =>
       setMealsData(meals),
     );
   }
-  return fetchMealByFirstLetter(inputText).then(({ meals }) =>
+  return fetchMealsByFirstLetter(inputText).then(({ meals }) =>
     setMealsData(meals),
   );
 };
 
 export const fetchDrinks = (setDrinksData, selectedRadio, inputText) => {
   if (selectedRadio === 'Ingredientes') {
-    return fetchDrinkByIngredient(inputText).then(({ drinks }) =>
+    return fetchDrinksByIngredient(inputText).then(({ drinks }) =>
       setDrinksData(drinks),
     );
   } else if (selectedRadio === 'Nome') {
-    return fetchDrinkByRecipeName(inputText).then(({ drinks }) =>
+    return fetchDrinksByRecipeName(inputText).then(({ drinks }) =>
       setDrinksData(drinks),
     );
   }
-  return fetchDrinkByFirstLetter(inputText).then(({ drinks }) =>
+  return fetchDrinksByFirstLetter(inputText).then(({ drinks }) =>
     setDrinksData(drinks),
   );
 };
