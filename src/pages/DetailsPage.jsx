@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { useContext } from 'react';
 import RecipesContext from '../contexts/RecipesContext';
 import { useLocation } from 'react-router-dom';
@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 const DetailsPage = () => {
   const { mealsData, drinksData } = useContext(RecipesContext);
   const { pathname } = useLocation();
-  console.log(mealsData);
+
   if (pathname.includes('bebidas')) {
     return (
       <div>

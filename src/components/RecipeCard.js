@@ -1,10 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import RedirectFunc from "../data/RedirectFunc";
+import React from 'react';
+import PropTypes from 'prop-types';
+import RedirectFunc from '../data/RedirectFunc';
 
 function RecipeCard({ imgSrc, name, id, index }) {
   return (
-    <div>
+    <div data-testid={`${index}-recipe-card`}>
       <img
         data-testid={`${index}-card-img`}
         className="img"
@@ -12,7 +12,11 @@ function RecipeCard({ imgSrc, name, id, index }) {
         alt={name}
       />
       <br />
-      <button type="button" onClick={() => <RedirectFunc id={id} />}>
+      <button
+        data-testid={`${index}-card-name`}
+        type="button"
+        onClick={() => <RedirectFunc id={id} />}
+      >
         {name}
       </button>
     </div>

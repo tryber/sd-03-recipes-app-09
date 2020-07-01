@@ -37,7 +37,7 @@ function Header() {
 
     return (
       <div className="header">
-        <Link to="/perfil">
+        <Link data-testid="profile-top-btn" to="/perfil">
           <img src={profileIcon} alt="Ícone de perfil" />
         </Link>
         <p className="header-title">{title}</p>
