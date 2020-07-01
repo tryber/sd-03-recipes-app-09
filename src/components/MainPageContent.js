@@ -1,15 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import RecipesContext from '../contexts/RecipesContext';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import GetRecipesCards from '../components/GetRecipesCards';
 import RedirectFunc from '../data/RedirectFunc';
 
-function MainPageContent() {
+function MainPageContent(mealsCondition, drinksCondition) {
   const { mealsData, drinksData } = useContext(RecipesContext);
-  const { pathname } = useLocation();
-  const mealsCondition = pathname === '/comidas' && mealsData;
-  const drinksCondition = pathname === '/bebidas' && drinksData;
 
   if (
     (mealsCondition && mealsData.length === 1) ||
@@ -27,5 +25,10 @@ function MainPageContent() {
     </div>
   );
 }
+
+MainPageContent.propTypes = {
+  mealsCondition: PropTypes.bool.isRequired,
+  drinksCondition: PropTypes.bool.isRequired,
+};
 
 export default MainPageContent;
