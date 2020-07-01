@@ -17,7 +17,7 @@ const LoginPage = () => {
 
   return (
     <form>
-      <h1>LoginPage</h1>
+      <h1>Login Page</h1>
       <input
         placeholder="Email"
         type="email"
@@ -35,6 +35,7 @@ const LoginPage = () => {
         id="password"
         onChange={(e) => setPassword(e.target.value)}
       />
+      <br />
       <Link to="/comidas">
         <button
           type="submit"
