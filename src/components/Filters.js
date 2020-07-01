@@ -4,7 +4,7 @@ import { fetchMealCategories } from '../services/ServiceMeal';
 import { fetchDrinkCategories } from '../services/ServiceDrinks';
 import RecipesContext from '../contexts/RecipesContext';
 
-const renderFilterButtons = (categories, handler) => {
+const renderFilterButtons = (categories, selectedCategory, handler) => {
   if (categories.length === 0) return null;
   return (
     <div>
@@ -31,6 +31,7 @@ const Filters = () => {
     setMealsCategories,
     drinkCategories,
     setDrinksCategories,
+    selectedCategory,
     setSelectedCategory,
   } = useContext(RecipesContext);
   const { pathname } = useLocation();
@@ -47,8 +48,8 @@ const Filters = () => {
   return (
     <div>
       {pathname === '/comidas'
-        ? renderFilterButtons(mealsCategories, setSelectedCategory)
-        : renderFilterButtons(drinkCategories, setSelectedCategory)}
+        ? renderFilterButtons(mealsCategories, selectedCategory, setSelectedCategory)
+        : renderFilterButtons(drinkCategories, selectedCategory, setSelectedCategory)}
     </div>
   );
 };
