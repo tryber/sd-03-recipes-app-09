@@ -11,13 +11,13 @@ const renderFilterButtons = (categories, selectedCategory, handler) => {
       <button
         onClick={(e) => handler(e.target.value)}
         type="button"
-        data-testid={`all-category-filter`}
-        value={"All"}
+        data-testid={'all-category-filter'}
+        value={'All'}
       >
         All
       </button>
       {categories.map(({ strCategory }, i) =>
-        i > 4 ? null : (
+        (i > 4 ? null : (
           <button
             key={strCategory}
             data-testid={`${strCategory}-category-filter`}
@@ -25,13 +25,13 @@ const renderFilterButtons = (categories, selectedCategory, handler) => {
             value={strCategory}
             onClick={(e) =>
               handler(
-                e.target.value !== selectedCategory ? e.target.value : "All"
+                e.target.value !== selectedCategory ? e.target.value : 'All',
               )
             }
           >
             {strCategory}
           </button>
-        )
+        )),
       )}
     </div>
   );
@@ -51,11 +51,11 @@ const Filters = () => {
   useEffect(() => {
     if (pathname === '/bebidas') {
       fetchDrinksCategories().then((response) =>
-        setDrinksCategories(response.drinks)
+        setDrinksCategories(response.drinks),
       );
     }
     fetchMealsCategories().then((response) =>
-      setMealsCategories(response.meals)
+      setMealsCategories(response.meals),
     );
   }, []);
 
@@ -65,12 +65,12 @@ const Filters = () => {
         ? renderFilterButtons(
             mealsCategories,
             selectedCategory,
-            setSelectedCategory
+            setSelectedCategory,
           )
         : renderFilterButtons(
             drinkCategories,
             selectedCategory,
-            setSelectedCategory
+            setSelectedCategory,
           )}
     </div>
   );

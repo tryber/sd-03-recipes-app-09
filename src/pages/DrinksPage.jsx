@@ -9,7 +9,7 @@ import Filters from '../components/Filters';
 
 const DrinksPage = () => {
   const { drinksData, setDrinksData, toggleSearchBar, selectedCategory } = useContext(
-    RecipesContext
+    RecipesContext,
   );
 
   useEffect(() => {

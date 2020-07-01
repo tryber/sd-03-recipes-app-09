@@ -24,7 +24,7 @@ const MealsPage = () => {
       fetchMeals().then(({ meals }) => setMealsData(meals));
     }
     fetchMealsByCategory(selectedCategory).then(({ meals }) =>
-      setMealsData(meals)
+      setMealsData(meals),
     );
   }, [selectedCategory]);
 

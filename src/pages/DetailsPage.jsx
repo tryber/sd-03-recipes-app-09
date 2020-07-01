@@ -1,7 +1,7 @@
 import React from 'react';
 import { useContext } from 'react';
-import RecipesContext from '../contexts/RecipesContext';
 import { useLocation } from 'react-router-dom';
+import RecipesContext from '../contexts/RecipesContext';
 
 const DetailsPage = () => {
   const { mealsData, drinksData } = useContext(RecipesContext);
