@@ -1,78 +1,47 @@
-import React, { useContext } from 'react';
-import { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import RecipesContext from '../contexts/RecipesContext';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import RecipeCard from '../components/RecipeCard';
+import GetRecipesCards from '../components/GetRecipesCards';
 import { fetchMeals } from '../services/ServiceMeals';
 import { fetchDrinks } from '../services/ServiceDrinks';
 import RedirectFunc from '../data/RedirectFunc';
 
 const MealsPage = () => {
-  const { mealsData, setMealsData, drinksData, setDrinksData } = useContext(
-    RecipesContext
-  );
+  const {
+    mealsData,
+    setMealsData,
+    drinksData,
+    setDrinksData,
+    toggleSearchBar,
+  } = useContext(RecipesContext);
   const { pathname } = useLocation();
+  const meals = pathname === '/comidas' && mealsData;
+  const drinks = pathname === '/bebidas' && drinksData;
 
   useEffect(() => {
     if (pathname === '/bebidas') {
       fetchDrinks().then(({ drinks }) => setDrinksData(drinks));
     }
     fetchMeals().then(({ meals }) => setMealsData(meals));
-  }, []);
-
-  // useEffect(() => {
-  //   if (pathname === '/bebidas') {
-  //     fetchDrinks().then(({ drinks }) => setDrinksData(drinks));
-  //   }
-  //   fetchMeals().then(({ meals }) => setMealsData(meals));
-  // }, [toggleSearchBar]);
-
-  const getRecipesCards = () => {
-    if (pathname === '/comidas' && mealsData) {
-      return mealsData.map((recipe, index) =>
-        index < 12 ? (
-          <RecipeCard
-            key={recipe.idMeal}
-            imgSrc={recipe.strMealThumb}
-            name={recipe.strMeal}
-            id={recipe.idMeal}
-          />
-        ) : undefined
-      );
-    } else if (pathname === '/bebidas' && drinksData) {
-      return drinksData.map((recipe, index) =>
-        index < 12 ? (
-          <RecipeCard
-            key={recipe.idDrink}
-            imgSrc={recipe.strDrinkThumb}
-            name={recipe.strDrink}
-            id={recipe.idDrink}
-          />
-        ) : undefined
-      );
-    }
-  };
+  }, [pathname, toggleSearchBar]);
 
   if (
-    (pathname === '/comidas' && mealsData && mealsData.length > 1) ||
-    (pathname === '/bebidas' && drinksData && drinksData.length > 1)
-  ) {
-    return (
-      <div>
-        <Header />
-        <div>{getRecipesCards()}</div>
-        <Footer />
-      </div>
-    );
-  } else if (
-    (pathname === "/comidas" && mealsData && mealsData.length === 1) ||
-    (pathname === "/bebidas" && drinksData && drinksData.length === 1)
+    (meals && mealsData.length === 1) ||
+    (drinks && drinksData.length === 1)
   ) {
     return RedirectFunc();
+  } else if (meals === null) {
+    alert('Sinto muito, não encontramos nenhuma receita para esses filtros');
   }
-  return <p>Loading...</p>;
+  return (
+    <div>
+      <Header />
+      <GetRecipesCards />
+      <Footer />
+    </div>
+  );
 };
 
 export default MealsPage;
