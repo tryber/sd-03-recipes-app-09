@@ -6,12 +6,12 @@ import { fetchMeals } from '../services/ServiceMeals';
 import { fetchDrinks } from '../services/ServiceDrinks';
 
 const MealsPage = () => {
-  const {  mealsData, drinksData, setMealsData, setDrinksData, toggleSearchBar } = useContext(
-    RecipesContext
+  const { mealsData, drinksData, setMealsData, setDrinksData, toggleSearchBar } = useContext(
+    RecipesContext,
   );
   const { pathname } = useLocation();
-  const mealsCondition = pathname === '/comidas' && mealsData;
-  const drinksCondition = pathname === '/bebidas' && drinksData;
+  const mealsCondition = pathname === '/comidas' && mealsData && mealsData.length === 1;
+  const drinksCondition = pathname === '/bebidas' && drinksData && drinksData.length === 1;
 
   useEffect(() => {
     if (pathname === '/bebidas') {

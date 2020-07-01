@@ -9,10 +9,7 @@ import RedirectFunc from '../data/RedirectFunc';
 function MainPageContent(mealsCondition, drinksCondition) {
   const { mealsData, drinksData } = useContext(RecipesContext);
 
-  if (
-    (mealsCondition && mealsData.length === 1) ||
-    (drinksCondition && drinksData.length === 1)
-  ) {
+  if (mealsCondition || drinksCondition) {
     return RedirectFunc();
   } else if (mealsData === null || drinksData === null) {
     alert('Sinto muito, não encontramos nenhuma receita para esses filtros');
