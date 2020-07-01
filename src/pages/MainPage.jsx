@@ -29,7 +29,7 @@ const MealsPage = () => {
 
   if (
     (mealsCondition && mealsData.length === 1) ||
-    (mealsCondition && drinksData.length === 1)
+    (drinksCondition && drinksData.length === 1)
   ) {
     return RedirectFunc();
   } else if (mealsData === null || drinksData === null) {
