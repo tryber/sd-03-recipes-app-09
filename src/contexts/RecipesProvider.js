@@ -23,8 +23,8 @@ function RecipesProvider({ children }) {
     setDrinksCategories,
     selectedCategory,
     setSelectedCategory,
-
   };
+
   return (
     <RecipesContext.Provider value={contextValue}>
       {children}
