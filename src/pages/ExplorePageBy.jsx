@@ -28,16 +28,16 @@ function ExplorePageBy() {
           setMealsData([data]);
           history.push(`/comidas/${data.idMeal}`);
         }));
-    } else {
-      const randomDrink = fetchRandomDrink();
-      randomDrink
-        .then((drink) => {
-          const data = drink.drinks[0];
-          setDrinksData([data]);
-          history.push(`/comidas/${data.idDrink}`);
-        });
     }
-  };
+
+    const randomDrink = fetchRandomDrink();
+    randomDrink
+      .then((drink) => {
+        const data = drink.drinks[0];
+        setDrinksData([data]);
+        history.push(`/comidas/${data.idDrink}`);
+      });
+  }
 
   return (
     <div>

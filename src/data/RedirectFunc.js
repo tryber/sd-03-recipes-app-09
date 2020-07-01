@@ -9,9 +9,6 @@ function RedirectFunc({ id }) {
   const { setMealsData, setDrinksData } = useContext(RecipesContext);
   const { pathname } = useLocation();
 
-  console.log('entrou no redirectFunc')
-  console.log(pathname)
-
   if (pathname.includes('/bebidas')) {
     fetchDrinksById(id).then(({ drinks }) => setDrinksData(drinks));
     return <Redirect to={`/bebidas/${id}`} />;
