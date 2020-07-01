@@ -17,8 +17,8 @@ const MealsPage = () => {
     toggleSearchBar,
   } = useContext(RecipesContext);
   const { pathname } = useLocation();
-  const meals = pathname === '/comidas' && mealsData;
-  const drinks = pathname === '/bebidas' && drinksData;
+  const mealsCondition = pathname === '/comidas' && mealsData;
+  const drinksCondition = pathname === '/bebidas' && drinksData;
 
   useEffect(() => {
     if (pathname === '/bebidas') {
@@ -28,11 +28,11 @@ const MealsPage = () => {
   }, [pathname, toggleSearchBar]);
 
   if (
-    (meals && mealsData.length === 1) ||
-    (drinks && drinksData.length === 1)
+    (mealsCondition && mealsData.length === 1) ||
+    (mealsCondition && drinksData.length === 1)
   ) {
     return RedirectFunc();
-  } else if (meals === null) {
+  } else if (mealsData === null || drinksData === null) {
     alert('Sinto muito, não encontramos nenhuma receita para esses filtros');
   }
   return (
