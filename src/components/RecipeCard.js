@@ -14,7 +14,7 @@ function RecipeCard({ imgSrc, name, id, index }) {
     </button>
   );
 }
-x
+
 RecipeCard.propTypes = {
   imgSrc: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,

@@ -12,7 +12,7 @@ import {
 export const fetchMeals = (setMealsData, selectedRadio, inputText) => {
   if (selectedRadio === 'Ingredientes') {
     return fetchMealsByIngredient(inputText).then(({ meals }) =>
-      setMealsData(meals),
+      setMealsData([{ idMeal: 1111 }]),
     );
   } else if (selectedRadio === 'Nome') {
     return fetchMealsByRecipeName(inputText).then(({ meals }) =>
