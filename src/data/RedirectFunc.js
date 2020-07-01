@@ -8,8 +8,8 @@ import { fetchMealById } from '../services/ServiceMeals';
 function RedirectFunc({ id }) {
   const { setMealsData, setDrinksData } = useContext(RecipesContext);
   const { pathname } = useLocation();
-
-  if (pathname.includes('/bebidas')) {
+  console.log(pathname.includes('bebidas'));
+  if (pathname.includes('bebidas')) {
     fetchDrinkById(id).then(({ drinks }) => setDrinksData(drinks));
     return <Redirect to={`/bebidas/${id}`} />;
   }

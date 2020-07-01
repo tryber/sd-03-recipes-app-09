@@ -1,17 +1,21 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import RedirectFunc from '../data/RedirectFunc';
+import React from "react";
+import PropTypes from "prop-types";
+import RedirectFunc from "../data/RedirectFunc";
 
 function RecipeCard({ imgSrc, name, id, index }) {
-  const onClick = () => (
-    <RedirectFunc id={id} />
-  );
-
   return (
-    <button type="button" onClick={onClick}>
-      <img data-testid={`${index}-card-img`} className="img" src={imgSrc} alt={name} />
-      <p>{name}</p>
-    </button>
+    <div>
+      <img
+        data-testid={`${index}-card-img`}
+        className="img"
+        src={imgSrc}
+        alt={name}
+      />
+      <br />
+      <button type="button" onClick={() => <RedirectFunc id={id} />}>
+        {name}
+      </button>
+    </div>
   );
 }
 

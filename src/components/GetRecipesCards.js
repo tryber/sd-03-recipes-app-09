@@ -6,7 +6,8 @@ import RecipesContext from '../contexts/RecipesContext';
 function GetRecipesCards() {
   const { mealsData, drinksData } = useContext(RecipesContext);
   const { pathname } = useLocation();
-  if (pathname === '/comidas' && mealsData) {
+
+  if (pathname.includes('comidas') && mealsData) {
     return mealsData.map((recipe, index) =>
       (index < 12 ? (
         <RecipeCard
@@ -18,7 +19,7 @@ function GetRecipesCards() {
         />
       ) : undefined),
     );
-  } else if (pathname === '/bebidas' && drinksData) {
+  } else if (pathname.includes('bebidas') && drinksData) {
     return drinksData.map((recipe, index) =>
       (index < 12 ? (
         <RecipeCard
