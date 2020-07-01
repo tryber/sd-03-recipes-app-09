@@ -31,13 +31,13 @@ function ExplorePageBy() {
     }
 
     const randomDrink = fetchRandomDrink();
-    randomDrink
+    return (randomDrink
       .then((drink) => {
         const data = drink.drinks[0];
         setDrinksData([data]);
         history.push(`/comidas/${data.idDrink}`);
-      });
-  }
+      }));
+  };
 
   return (
     <div>
