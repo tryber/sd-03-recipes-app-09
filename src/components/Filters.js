@@ -9,16 +9,16 @@ const renderFilterButtons = (categories, handler) => {
   return (
     <div>
       <button onClick={(e) => handler(e.target.value)} type="button">All</button>
-      {categories.map((category, i) => (
+      {categories.map(({ strCategory }, i) => (
         i > 4 ? null
           : (
             <button
-              data-testid={`${category.strCategory}-category-filter`}
+              data-testid={`${strCategory}-category-filter`}
               type="button"
-              value={category.strCategory}
-              onClick={(e) => handler(e.target.value)}
+              value={strCategory}
+              onClick={(e) => handler(e.target.value !== selectedCategory ? e.target.value : 'All')}
             >
-              {category.strCategory}
+              {strCategory}
             </button>
           )))}
     </div>
