@@ -8,17 +8,17 @@ function RecipeCard({ imgSrc, name, id }) {
   );
 
   return (
-    <div>
-      <img onClick={onClick} className="img" src={imgSrc} alt={name} />
+    <button type="button" onClick={onClick}>
+      <img className="img" src={imgSrc} alt={name} />
       <p>{name}</p>
-    </div>
+    </button>
   );
 }
 
 RecipeCard.propTypes = {
   imgSrc: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default RecipeCard;

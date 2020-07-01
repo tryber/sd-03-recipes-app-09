@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
-import { useLocation } from "react-router-dom";
-import RecipeCard from "./RecipeCard";
-import RecipesContext from "../contexts/RecipesContext";
+import React, { useContext } from 'react';
+import { useLocation } from 'react-router-dom';
+import RecipeCard from './RecipeCard';
+import RecipesContext from '../contexts/RecipesContext';
 
 function GetRecipesCards() {
   const { mealsData, drinksData } = useContext(RecipesContext);
   const { pathname } = useLocation();
-  if (pathname === "/comidas" && mealsData) {
+  if (pathname === '/comidas' && mealsData) {
     return mealsData.map((recipe, index) =>
       (index < 12 ? (
         <RecipeCard
@@ -15,9 +15,9 @@ function GetRecipesCards() {
           name={recipe.strMeal}
           id={recipe.idMeal}
         />
-      ) : undefined)
+      ) : undefined),
     );
-  } else if (pathname === "/bebidas" && drinksData) {
+  } else if (pathname === '/bebidas' && drinksData) {
     return drinksData.map((recipe, index) =>
       (index < 12 ? (
         <RecipeCard
@@ -26,7 +26,7 @@ function GetRecipesCards() {
           name={recipe.strDrink}
           id={recipe.idDrink}
         />
-      ) : undefined)
+      ) : undefined),
     );
   }
   return <div />;

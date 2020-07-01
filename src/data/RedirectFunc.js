@@ -8,7 +8,7 @@ import { fetchMealById } from '../services/ServiceMeals';
 function RedirectFunc({ id }) {
   const { setMealsData, setDrinksData } = useContext(RecipesContext);
   const { pathname } = useLocation();
-
+console.log(id);
   if (pathname.includes('/bebidas')) {
     fetchDrinkById(id).then(({ drinks }) => setDrinksData(drinks));
     return <Redirect to={`/bebidas/${id}`} />;
@@ -18,7 +18,7 @@ function RedirectFunc({ id }) {
 }
 
 RedirectFunc.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default RedirectFunc;
