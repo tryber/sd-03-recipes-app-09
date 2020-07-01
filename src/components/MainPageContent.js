@@ -10,7 +10,7 @@ function MainPageContent(mealsCondition, drinksCondition) {
   const { mealsData, drinksData } = useContext(RecipesContext);
 
   if (mealsCondition || drinksCondition) {
-    return RedirectFunc();
+    return <RedirectFunc id={111} />;
   } else if (mealsData === null || drinksData === null) {
     alert('Sinto muito, não encontramos nenhuma receita para esses filtros');
   }

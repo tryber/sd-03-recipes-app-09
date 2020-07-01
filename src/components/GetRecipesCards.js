@@ -14,6 +14,7 @@ function GetRecipesCards() {
           imgSrc={recipe.strMealThumb}
           name={recipe.strMeal}
           id={recipe.idMeal}
+          index={index}
         />
       ) : undefined),
     );
@@ -25,6 +26,7 @@ function GetRecipesCards() {
           imgSrc={recipe.strDrinkThumb}
           name={recipe.strDrink}
           id={recipe.idDrink}
+          index={index}
         />
       ) : undefined),
     );
