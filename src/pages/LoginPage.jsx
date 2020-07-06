@@ -48,7 +48,7 @@ const LoginPage = () => {
         <button
           type="submit"
           data-testid="login-submit-btn"
-          disabled={!validEmail(email) || password.length < 6}
+          disabled={!validEmail(email) || password.length <= 6}
           onClick={() => setLocalStorage(email)}
         >
           Login
