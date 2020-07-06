@@ -40,7 +40,7 @@ function Header() {
         <Link data-testid="profile-top-btn" to="/perfil">
           <img src={profileIcon} alt="Ícone de perfil" />
         </Link>
-        <p className="header-title">{title}</p>
+        <p data-testid="page-title" className="header-title">{title}</p>
         <button
           type="button"
           data-testid="search-top-btn"
