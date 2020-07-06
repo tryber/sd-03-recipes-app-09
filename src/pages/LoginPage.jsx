@@ -21,7 +21,7 @@ const LoginPage = () => {
     console.log('login');
     setDrinksData([]);
     setMealsData([]);
-  });
+  }, []);
 
   return (
     <form>
