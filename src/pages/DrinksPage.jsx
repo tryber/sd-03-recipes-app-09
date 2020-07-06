@@ -24,7 +24,7 @@ const DrinksPage = () => {
   if (drinksData && drinksData.length === 1) {
     return <RedirectFunc id={drinksData[0].idDrink} />;
   } else if (toggleSearchBar && drinksData.length === 0) {
-    alert('Sinto muito, não encontramos nenhuma receita para esses filtros');
+    alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
   }
   return (
     <div>

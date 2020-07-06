@@ -11,7 +11,7 @@ const renderFilterButtons = (categories, selectedCategory, handler) => {
       <button
         onClick={(e) => handler(e.target.value)}
         type="button"
-        data-testid={'all-category-filter'}
+        data-testid={'All-category-filter'}
         value={'All'}
       >
         All

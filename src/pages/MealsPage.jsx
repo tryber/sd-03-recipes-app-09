@@ -31,7 +31,7 @@ const MealsPage = () => {
   if (mealsData && mealsData.length === 1) {
     return <RedirectFunc id={mealsData[0].idMeal} />;
   } else if (toggleSearchBar && mealsData === null) {
-    alert('Sinto muito, não encontramos nenhuma receita para esses filtros');
+    alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
   }
   return (
     <div>
