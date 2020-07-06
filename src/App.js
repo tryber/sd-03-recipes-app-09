@@ -2,7 +2,8 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import LoginPage from './pages/LoginPage';
-import MainPage from './pages/MainPage';
+import MealsPage from './pages/MealsPage';
+import DrinksPage from './pages/DrinksPage';
 import ProfilePage from './pages/ProfilePage';
 import ExplorePage from './pages/ExplorePage';
 
