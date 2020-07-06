@@ -1,42 +1,47 @@
-import { useContext } from 'react';
-import RecipesContext from '../contexts/RecipesContext';
-
-const { setDrinksData, setDrinksCategories } = useContext(RecipesContext);
-
-export const fetchDrinks = () => fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=')
-  .then((response) => response.json())
-  .then((result) => setDrinksData(result));
-
-export const fetchDrinkByIngredient = (ingredient) => {
-  fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`)
-    .then((response) => response.json())
-    .then((result) => setDrinksData(result));
+export const fetchDrinks = async () => {
+  const request = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
+  const json = await request.json();
+  return json;
 };
 
-export const fetchDrinkByRecipeName = (recipeName) => {
-  fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${recipeName}`)
-    .then((response) => response.json())
-    .then((result) => setDrinksData(result));
+export const fetchDrinksByIngredient = async (ingredient) => {
+  const request = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`);
+  const json = await request.json();
+  return json;
 };
 
-export const fetchDrinkByFirstLetter = (firstLetter) => {
-  fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${firstLetter}`)
-    .then((response) => response.json())
-    .then((result) => setDrinksData(result));
+export const fetchDrinksByRecipeName = async (recipeName) => {
+  const request = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${recipeName}`);
+  const json = await request.json();
+  return json;
 };
 
-export const fetchDrinkCategories = () => fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list')
-  .then((response) => response.json())
-  .then((result) => setDrinksCategories(result));
+export const fetchDrinksByFirstLetter = async (firstLetter) => {
+  const request = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${firstLetter}`);
+  const data = await request.json();
+  return data;
+};
 
-export const fetchDrinksByCategory = (category) => fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`)
-  .then((response) => response.json())
-  .then((result) => setDrinksData(result));
+export const fetchDrinksCategories = async () => {
+  const request = await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list');
+  const json = await request.json();
+  return json;
+};
 
-export const fetchDrinkById = (id) => fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)
-  .then((response) => response.json())
-  .then((result) => console.log('Drinks fetch 3', result));
+export const fetchDrinksByCategory = async (category) => {
+  const request = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`);
+  const json = await request.json();
+  return json;
+};
 
-export const fetchRandomDrink = () => fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
-  .then((response) => response.json())
-  .then((result) => console.log('Drinks fetch 7', result));
+export const fetchDrinkById = async (id) => {
+  const request = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
+  const json = await request.json();
+  return json;
+};
+
+export const fetchRandomDrink = async () => {
+  const request = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php');
+  const json = await request.json();
+  return json;
+};

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 
+import RecipesContext from '../contexts/RecipesContext';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import { patterns, forbiddenPlacesForSearchBar } from '../data/Data';
@@ -10,7 +11,7 @@ import SearchBar from './SearchBar';
 function Header() {
   const CheckLocation = () => {
     const { pathname } = useLocation();
-    const [toggleSearchBar, setToggleSearchBar] = useState(false);
+    const { toggleSearchBar, setToggleSearchBar } = useContext(RecipesContext);
 
     const formatPathName = (path) => (
       patterns.find((patternEntry) => patternEntry.path === path)
