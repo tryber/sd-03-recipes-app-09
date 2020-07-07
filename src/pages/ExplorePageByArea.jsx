@@ -60,6 +60,7 @@ export default function ExplorePageByArea() {
   }, []);
 
   return (
+    <div>
       <Header />
       {region && region.length > 1 ? (
         <AreaOptions areas={region} handleChange={setSelectedRegion} />
@@ -68,5 +69,6 @@ export default function ExplorePageByArea() {
       )}
       {recipes && filterByRegion()}
       <Footer />
+    </div>
   );
 }
