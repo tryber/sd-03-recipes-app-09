@@ -17,8 +17,8 @@ export default function ExplorePageByArea() {
     recipe.map((meal, index) => {
       if (index < 12) {
         treatment = [...treatment, meal];
-        return treatment;
       }
+      return treatment;
     });
 
     return treatment;
