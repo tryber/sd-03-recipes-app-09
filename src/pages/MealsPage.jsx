@@ -17,10 +17,11 @@ const MealsPage = () => {
 
   useEffect(() => {
     if (selectedCategory === 'All') {
-      fetchMeals().then(({ meals }) => setMealsData(meals));
+      fetchMeals().then(({ meals }) => setMealsData(meals), setMealsData([]),);
     } else {
-      fetchMealsByCategory(selectedCategory).then(({ meals }) =>
-        setMealsData(meals)
+      fetchMealsByCategory(selectedCategory).then(
+        ({ meals }) => setMealsData(meals),
+        setMealsData([]),
       );
     }
   }, [selectedCategory]);

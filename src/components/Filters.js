@@ -6,7 +6,7 @@ import RecipesContext from '../contexts/RecipesContext';
 
 
 const handler = (setSelectedCategory, value) => (
-setSelectedCategory((state) => value !== state ? value : 'All')
+setSelectedCategory((state) => (value !== state ? value : 'All'))
 );
 
 const renderFilterButtons = (categories, setSelectedCategory) => {

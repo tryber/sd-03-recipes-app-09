@@ -19,12 +19,12 @@ const DrinksPage = () => {
     if (selectedCategory === 'All') {
       fetchDrinks().then(
         ({ drinks }) => setDrinksData(drinks),
-        setDrinksData([])
+        setDrinksData([]),
       );
     } else {
       fetchDrinksByCategory(selectedCategory).then(
         ({ drinks }) => setDrinksData(drinks),
-        setDrinksData([])
+        setDrinksData([]),
       );
     }
   }, [selectedCategory]);
