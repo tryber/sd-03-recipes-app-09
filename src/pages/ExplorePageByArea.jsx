@@ -17,6 +17,7 @@ export default function ExplorePageByArea() {
     recipe.map((meal, index) => {
       if (index < 12) {
         treatment = [...treatment, meal];
+        return treatment;
       }
     });
 
@@ -28,7 +29,7 @@ export default function ExplorePageByArea() {
     const twelveRequest = await updateState(meals);
     const areas = twelveRequest.reduce(
       (acc, { strArea }) => [...acc, strArea],
-      []
+      [],
     );
     const uniqueAreas = [...new Set(areas)];
     setRecipesData([...twelveRequest]);
