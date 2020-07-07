@@ -4,12 +4,17 @@ import { fetchMealsCategories } from '../services/ServiceMeals';
 import { fetchDrinksCategories } from '../services/ServiceDrinks';
 import RecipesContext from '../contexts/RecipesContext';
 
-const renderFilterButtons = (categories, selectedCategory, handler) => {
+
+const handler = (setSelectedCategory, value) => (
+setSelectedCategory((state) => value !== state ? value : 'All')
+);
+
+const renderFilterButtons = (categories, setSelectedCategory) => {
   if (categories.length === 0) return null;
   return (
     <div>
       <button
-        onClick={(e) => handler(e.target.value)}
+        onClick={(e) => handler(setSelectedCategory, e.target.value)}
         type="button"
         data-testid={'All-category-filter'}
         value={'All'}
@@ -24,9 +29,7 @@ const renderFilterButtons = (categories, selectedCategory, handler) => {
             type="button"
             value={strCategory}
             onClick={(e) =>
-              handler(
-                e.target.value !== selectedCategory ? e.target.value : 'All',
-              )
+              handler(setSelectedCategory, e.target.value)
             }
           >
             {strCategory}
@@ -43,7 +46,6 @@ const Filters = () => {
     setMealsCategories,
     drinkCategories,
     setDrinksCategories,
-    selectedCategory,
     setSelectedCategory,
   } = useContext(RecipesContext);
   const { pathname } = useLocation();
@@ -64,12 +66,10 @@ const Filters = () => {
       {pathname === '/comidas'
         ? renderFilterButtons(
             mealsCategories,
-            selectedCategory,
             setSelectedCategory,
           )
         : renderFilterButtons(
             drinkCategories,
-            selectedCategory,
             setSelectedCategory,
           )}
     </div>

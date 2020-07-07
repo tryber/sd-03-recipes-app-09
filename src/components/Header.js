@@ -26,8 +26,8 @@ function Header() {
     if (checkForbidden) {
       return (
         <div className="header">
-          <Link to="/perfil" data-testid="profile-top-btn">
-            <img src={profileIcon} alt="Ícone de perfil" />
+          <Link to="/perfil">
+            <img data-testid="profile-top-btn" src={profileIcon} alt="Ícone de perfil" />
           </Link>
           <p className="header-title" data-testid="page-title">{title}</p>
           <p />
@@ -37,16 +37,15 @@ function Header() {
 
     return (
       <div className="header">
-        <Link data-testid="profile-top-btn" to="/perfil">
-          <img src={profileIcon} alt="Ícone de perfil" />
+        <Link to="/perfil">
+          <img data-testid="profile-top-btn" src={profileIcon} alt="Ícone de perfil" />
         </Link>
         <p data-testid="page-title" className="header-title">{title}</p>
         <button
           type="button"
-          data-testid="search-top-btn"
           onClick={() => setToggleSearchBar(!toggleSearchBar)}
         >
-          <img src={searchIcon} alt="Ícone de busca" />
+          <img data-testid="search-top-btn" src={searchIcon} alt="Ícone de busca" />
         </button>
         { toggleSearchBar && <SearchBar /> }
       </div>

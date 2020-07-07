@@ -8,20 +8,28 @@ import RedirectFunc from '../data/RedirectFunc';
 import Filters from '../components/Filters';
 
 const DrinksPage = () => {
-  const { drinksData, setDrinksData, toggleSearchBar, selectedCategory } = useContext(
-    RecipesContext,
-  );
+  const {
+    drinksData,
+    setDrinksData,
+    toggleSearchBar,
+    selectedCategory,
+  } = useContext(RecipesContext);
 
   useEffect(() => {
-    fetchDrinks().then(({ drinks }) => setDrinksData(drinks));
-  }, []);
-
-  useEffect(() => {
-    if (selectedCategory === 'All') fetchDrinks().then(({ drinks }) => setDrinksData(drinks));
-    fetchDrinksByCategory(selectedCategory).then(({ drinks }) => setDrinksData(drinks));
+    if (selectedCategory === 'All') {
+      fetchDrinks().then(
+        ({ drinks }) => setDrinksData(drinks),
+        setDrinksData([])
+      );
+    } else {
+      fetchDrinksByCategory(selectedCategory).then(
+        ({ drinks }) => setDrinksData(drinks),
+        setDrinksData([])
+      );
+    }
   }, [selectedCategory]);
 
-  if (drinksData && drinksData.length === 1) {
+  if (toggleSearchBar && drinksData && drinksData.length === 1) {
     return <RedirectFunc id={drinksData[0].idDrink} />;
   } else if (toggleSearchBar && drinksData.length === 0) {
     alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');

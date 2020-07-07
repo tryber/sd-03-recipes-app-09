@@ -16,19 +16,16 @@ const MealsPage = () => {
   } = useContext(RecipesContext);
 
   useEffect(() => {
-    fetchMeals().then(({ meals }) => setMealsData(meals));
-  }, []);
-
-  useEffect(() => {
     if (selectedCategory === 'All') {
       fetchMeals().then(({ meals }) => setMealsData(meals));
+    } else {
+      fetchMealsByCategory(selectedCategory).then(({ meals }) =>
+        setMealsData(meals)
+      );
     }
-    fetchMealsByCategory(selectedCategory).then(({ meals }) =>
-      setMealsData(meals),
-    );
   }, [selectedCategory]);
 
-  if (mealsData && mealsData.length === 1) {
+  if (toggleSearchBar && mealsData && mealsData.length === 1) {
     return <RedirectFunc id={mealsData[0].idMeal} />;
   } else if (toggleSearchBar && mealsData === null) {
     alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');

@@ -16,6 +16,7 @@ function GetRecipesCards() {
           name={recipe.strMeal}
           id={recipe.idMeal}
           index={index}
+          path='comidas'
         />
       ) : undefined),
     );
@@ -28,6 +29,7 @@ function GetRecipesCards() {
           name={recipe.strDrink}
           id={recipe.idDrink}
           index={index}
+          path='bebidas'
         />
       ) : undefined),
     );
