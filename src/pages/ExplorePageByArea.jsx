@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
 import { fetchMeals } from '../services/ServiceMeals';
+import FilterByRegion from '../data/FilterByRegion';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import AreaOptions from '../components/AreaOptions';
-import RecipeCard from '../components/RecipeCard';
 
 export default function ExplorePageByArea() {
   const [recipes, setRecipesData] = useState([]);
@@ -24,27 +24,13 @@ export default function ExplorePageByArea() {
   const getMeals = async () => {
     const { meals } = await fetchMeals();
     const twelveRequest = await updateState(meals);
-    const uniqueAreas = [...new Set(twelveRequest.reduce((acc, { strArea }) => [...acc, strArea], []))];
+    const uniqueAreas = [
+      ...new Set(
+        twelveRequest.reduce((acc, { strArea }) => [...acc, strArea], []),
+      ),
+    ];
     setRecipesData([...twelveRequest]);
     setRegion([...uniqueAreas]);
-  };
-
-  const filterByRegion = () => {
-    let theRealDeal = recipes;
-    if (selectedRegion !== 'All') {
-      theRealDeal = recipes.filter(({ strArea }) => strArea === selectedRegion);
-    }
-
-    return theRealDeal.map((recipe, index) => (
-      <RecipeCard
-        key={recipe.idMeal}
-        imgSrc={recipe.strMealThumb}
-        name={recipe.strMeal}
-        id={recipe.idMeal}
-        index={index}
-        path="comidas"
-      />
-    ));
   };
 
   useEffect(() => {
@@ -59,7 +45,7 @@ export default function ExplorePageByArea() {
       ) : (
         <p>Carregando...</p>
       )}
-      {recipes && filterByRegion()}
+      {recipes && FilterByRegion(recipes, selectedRegion)}
       <Footer />
     </div>
   );
