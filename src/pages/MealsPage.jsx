@@ -17,7 +17,7 @@ const MealsPage = () => {
 
   useEffect(() => {
     if (selectedCategory === 'All') {
-      fetchMeals().then(({ meals }) => setMealsData(meals), setMealsData([]),);
+      fetchMeals().then(({ meals }) => setMealsData(meals), setMealsData([]));
     } else {
       fetchMealsByCategory(selectedCategory).then(
         ({ meals }) => setMealsData(meals),
