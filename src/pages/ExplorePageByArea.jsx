@@ -24,11 +24,7 @@ export default function ExplorePageByArea() {
   const getMeals = async () => {
     const { meals } = await fetchMeals();
     const twelveRequest = await updateState(meals);
-    const areas = twelveRequest.reduce(
-      (acc, { strArea }) => [...acc, strArea],
-      [],
-    );
-    const uniqueAreas = [...new Set(areas)];
+    const uniqueAreas = [...new Set(twelveRequest.reduce((acc, { strArea }) => [...acc, strArea], []))];
     setRecipesData([...twelveRequest]);
     setRegion([...uniqueAreas]);
   };
