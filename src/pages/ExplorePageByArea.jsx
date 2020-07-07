@@ -15,12 +15,9 @@ export default function ExplorePageByArea() {
   const updateState = (recipe) => {
     let treatment = [];
     recipe.map((meal, index) => {
-      if (index < 12) {
-        treatment = [...treatment, meal];
-      }
+      if (index < 12) treatment = [...treatment, meal];
       return treatment;
     });
-
     return treatment;
   };
 
@@ -37,11 +34,9 @@ export default function ExplorePageByArea() {
   };
 
   const filterByRegion = () => {
-    let theRealDeal = null;
+    let theRealDeal = recipes;
     if (selectedRegion !== 'All') {
       theRealDeal = recipes.filter(({ strArea }) => strArea === selectedRegion);
-    } else {
-      theRealDeal = recipes;
     }
 
     return theRealDeal.map((recipe, index) => (
