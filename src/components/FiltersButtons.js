@@ -1,6 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function FiltersButtons(handleClick) {
+export default function FiltersButtons(props) {
+  const { handleClick } = props;
+
   return (
     <div>
       <button type="button" data-testid="filter-by-all-btn" onClick={() => handleClick('All')}>
@@ -15,3 +18,7 @@ export default function FiltersButtons(handleClick) {
     </div>
   );
 }
+
+FiltersButtons.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+};
