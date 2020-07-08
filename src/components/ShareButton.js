@@ -1,24 +1,23 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import shareIcon from '../images/shareIcon.svg';
 
-const copyLinkToClipboard = () => {
-  const textArea = document.createElement('textarea');
-  textArea.value = window.location.href;
-  document.body.appendChild(textArea);
-  textArea.focus();
-  textArea.select();
-  document.execCommand('copy');
-  document.body.removeChild(textArea);
+const copyLinkToClipboard = (pathname) => {
+  navigator.clipboard.writeText(`http://localhost:3000${pathname}`);
   const titleWrapper = document.getElementById('title-wrapper');
   const copyAlert = document.createElement('span');
   copyAlert.innerHTML = 'Link copiado!';
   titleWrapper.appendChild(copyAlert);
+  setTimeout(() => titleWrapper.removeChild(copyAlert), 1000);
 };
 
-const ShareButton = () => (
-  <button data-testid="share-btn" type="button" onClick={copyLinkToClipboard}>
-    <img alt="share-icon" src={shareIcon} />
-  </button>
-);
+const ShareButton = () => {
+  const { pathname } = useLocation();
+  return (
+    <button data-testid="share-btn" type="button" onClick={() => copyLinkToClipboard(pathname)}>
+      <img alt="share-icon" src={shareIcon} />
+    </button>
+  );
+};
 
 export default ShareButton;
