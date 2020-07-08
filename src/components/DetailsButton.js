@@ -31,7 +31,7 @@ const DetailsButton = ({ id }) => {
       <button
         type="button"
         data-testid="start-recipe-btn"
-        style={{ position: "fixed", bottom: "0px" }}
+        style={{ position: 'fixed', bottom: '0px' }}
       >
         <Link to={`${path}/${id}/in-progress`}>
           {!isRecipeInProgress(id) ? 'Iniciar Receita' : 'Continuar Receita'}
@@ -42,7 +42,7 @@ const DetailsButton = ({ id }) => {
 };
 
 DetailsButton.propTypes = {
-  id: PropTypes.string,
+  id: PropTypes.string.isRequired,
 };
 
 export default DetailsButton;
