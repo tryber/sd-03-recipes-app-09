@@ -8,7 +8,6 @@ import ExplorePage from './pages/ExplorePage';
 import ExplorePageByForD from './pages/ExplorePageByForD';
 import ExplorePageByArea from './pages/ExplorePageByArea';
 import DetailsPage from './pages/DetailsPage';
-import ExplorePageBy from './pages/ExplorePageBy';
 import DrinksPage from './pages/DrinksPage';
 
 function App() {
