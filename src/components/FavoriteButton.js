@@ -36,7 +36,7 @@ const removeFavorite = (id, setIsFavorite) => {
 
 const FavoriteButton = (data) => {
   const [favorite, setFavorite] = useState(false);
-  useEffect(() => () => setFavorite(false), [favorite]);
+  useEffect(() => console.log(favorite), [favorite]);
   return (
     <button
       type="button"
