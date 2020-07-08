@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import DetailsContent from '../components/DetailsContent';
 import DetailsRecommended from '../components/DetailsRecommended';
 import DetailsButton from '../components/DetailsButton';
-import { fetchMealById } from '../services/ServiceMeal';
+import { fetchMealById } from '../services/ServiceMeals';
 import { fetchDrinkById } from '../services/ServiceDrinks';
 import RecipesContext from '../contexts/RecipesContext';
 import { sortDrinkData, sortMealData } from '../data/helpers/sortData';
