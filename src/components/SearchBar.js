@@ -31,7 +31,7 @@ function SearchBar() {
     onClick,
   };
 
-  return <SearchBarForm {...props} />;
+  return <div>{<SearchBarForm {...props} />}</div>;
 }
 
 export default SearchBar;

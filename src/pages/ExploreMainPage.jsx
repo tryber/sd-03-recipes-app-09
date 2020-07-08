@@ -1,14 +1,12 @@
 import React, { useContext } from 'react';
 import { useLocation, Link, useHistory } from 'react-router-dom';
-
 import RecipesContext from '../contexts/RecipesContext';
 import { fetchRandomDrink } from '../services/ServiceDrinks';
 import { fetchRandomMeal } from '../services/ServiceMeals';
-
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-function ExplorePageBy() {
+function ExploreMainPage() {
   const { pathname } = useLocation();
   const history = useHistory();
   const { setMealsData, setDrinksData } = useContext(RecipesContext);
@@ -34,7 +32,7 @@ function ExplorePageBy() {
       .then((drink) => {
         const data = drink.drinks[0];
         setDrinksData([data]);
-        history.push(`/comidas/${data.idDrink}`);
+        history.push(`/bebidas/${data.idDrink}`);
       }));
   };
 
@@ -56,4 +54,4 @@ function ExplorePageBy() {
   );
 }
 
-export default ExplorePageBy;
+export default ExploreMainPage;

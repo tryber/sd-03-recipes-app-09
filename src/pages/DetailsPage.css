@@ -1,0 +1,36 @@
+body {
+  width: 360px;
+}
+
+.details-img {
+  height: 155px;
+  left: 0;
+  top: 0;
+  width: 360px;
+}
+
+.details-name-wrapper {
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+}
+
+.details-name {
+  display: inline;
+  font-size: 30px;
+}
+
+.recommended-carousel {
+  display: flex;
+  flex-direction: row;
+  height: 240px;
+  overflow: scroll;
+}
+
+.recommended-card {
+  height: 240px;
+}
+
+.recommended-button {
+  margin-bottom: 0;
+}
