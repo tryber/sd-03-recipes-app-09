@@ -4,7 +4,6 @@ import { fetchMealsCategories } from '../services/ServiceMeals';
 import { fetchDrinksCategories } from '../services/ServiceDrinks';
 import RecipesContext from '../contexts/RecipesContext';
 
-
 const handler = (setSelectedCategory, value) => (
 setSelectedCategory((state) => (value !== state ? value : 'All'))
 );
