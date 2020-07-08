@@ -12,16 +12,6 @@ code {
     monospace;
 }
 
-.footer {
-  background-color: #C4C4C4;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .header {
   background-color: #C4C4C4;;
   color: black;
