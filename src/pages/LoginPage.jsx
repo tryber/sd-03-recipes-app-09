@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import RecipesContext from '../contexts/RecipesContext';
 
 const setLocalStorage = (email) => {
   localStorage.setItem('mealsToken', 1);
@@ -10,14 +11,21 @@ const setLocalStorage = (email) => {
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { setDrinksData, setMealsData } = useContext(RecipesContext);
   const validEmail = () => {
     const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     return !!email && typeof email === 'string' && !!email.match(emailRegex);
   };
 
+  useEffect(() => {
+    console.log('login');
+    setDrinksData([]);
+    setMealsData([]);
+  }, []);
+
   return (
     <form>
-      <h1>LoginPage</h1>
+      <h1>Login Page</h1>
       <input
         placeholder="Email"
         type="email"
@@ -35,11 +43,12 @@ const LoginPage = () => {
         id="password"
         onChange={(e) => setPassword(e.target.value)}
       />
+      <br />
       <Link to="/comidas">
         <button
           type="submit"
           data-testid="login-submit-btn"
-          disabled={!validEmail(email) || password.length < 6}
+          disabled={!validEmail(email) || password.length <= 6}
           onClick={() => setLocalStorage(email)}
         >
           Login
