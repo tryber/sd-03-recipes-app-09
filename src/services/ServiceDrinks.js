@@ -4,25 +4,26 @@ export const fetchDrinks = async () => {
   return json;
 };
 
-export const fetchDrinkByIngredient = async (ingredient) => {
-  const request = fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`);
+export const fetchDrinksByIngredient = async (ingredient) => {
+  const request = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`);
   const json = await request.json();
   return json;
 };
 
-export const fetchDrinkByRecipeName = async (recipeName) => {
+export const fetchDrinksByRecipeName = async (recipeName) => {
   const request = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${recipeName}`);
   const json = await request.json();
   return json;
 };
-export const fetchDrinkByFirstLetter = async (firstLetter) => {
-  const request = fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${firstLetter}`);
-  const json = await request.json();
-  return json;
+
+export const fetchDrinksByFirstLetter = async (firstLetter) => {
+  const request = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${firstLetter}`);
+  const data = await request.json();
+  return data;
 };
 
-export const fetchDrinkCategories = async () => {
-  const request = fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list');
+export const fetchDrinksCategories = async () => {
+  const request = await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list');
   const json = await request.json();
   return json;
 };
