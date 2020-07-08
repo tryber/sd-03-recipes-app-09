@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { fetchMeals } from '../services/ServiceMeal';
+import { fetchMeals } from '../services/ServiceMeals';
 import { fetchDrinks } from '../services/ServiceDrinks';
 import { sortMealData, sortDrinkData } from '../data/helpers/sortData';
 import RecommendationCard from './RecommendationCard';
