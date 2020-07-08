@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 
 const isFavorite = (id) => {
   const favorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
-  if (favorites) {
-    return favorites.some((recipe) => recipe.id === id);
-  }
-  return false;
+  return favorites ? favorites.some((recipe) => recipe.id === id) : false;
 };
 
 const saveFavorite = (data, setIsFavorite) => {
@@ -35,16 +32,15 @@ const removeFavorite = (id, setIsFavorite) => {
 };
 
 const FavoriteButton = (data) => {
-  const [favorite, setFavorite] = useState(false);
-  useEffect(() => console.log(favorite), [favorite]);
+  const [favorite, setFavorite] = useState(isFavorite(data.id));
   return (
     <button
       type="button"
-      onClick={isFavorite(data.id)
+      onClick={favorite
         ? () => removeFavorite(data.id, setFavorite)
         : () => saveFavorite(data, setFavorite)}
     >
-      {isFavorite(data.id)
+      {favorite
         ? (
           <img
             data-testid="favorite-btn"

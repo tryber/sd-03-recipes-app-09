@@ -22,7 +22,7 @@ const DetailsRecommended = () => {
         .then((response) => response.map((meal) => sortMealData(meal)))
         .then((result) => setRecommended(result));
     }
-  }, []);
+  }, [pathname]);
   if (recommended) {
     return (
       <div>
