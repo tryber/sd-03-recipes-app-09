@@ -1,51 +1,54 @@
 import React, { useEffect, useState } from 'react';
 
-import { fetchMeals } from '../services/ServiceMeals';
-import FilterByRegion from '../data/FilterByRegion';
+import { fetchMeals, fetchFilterByArea } from '../services/ServiceMeals';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import AreaOptions from '../components/AreaOptions';
+import RecipeCard from '../components/RecipeCard';
 
 export default function ExplorePageByArea() {
   const [recipes, setRecipesData] = useState([]);
-  const [region, setRegion] = useState([]);
   const [selectedRegion, setSelectedRegion] = useState('All');
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
 
-  const updateState = (recipe) => {
-    let treatment = [];
-    recipe.map((meal, index) => {
-      if (index < 12) treatment = [...treatment, meal];
-      return treatment;
-    });
-    return treatment;
+  const getMeals = async (region) => {
+    if (region === 'All') {
+      const { meals } = await fetchMeals();
+      return setRecipesData([...meals.map((meal) => meal).slice(0, 12)]);
+    }
+
+    if (region !== 'All') {
+      const { meals } = await fetchFilterByArea(region);
+      return setFilteredRecipes([...meals.map((meal) => meal).slice(0, 12)]);
+    }
+
+    return null;
   };
 
-  const getMeals = async () => {
-    const { meals } = await fetchMeals();
-    const twelveRequest = await updateState(meals);
-    const uniqueAreas = [
-      ...new Set(
-        twelveRequest.reduce((acc, { strArea }) => [...acc, strArea], []),
-      ),
-    ];
-    setRecipesData([...twelveRequest]);
-    setRegion([...uniqueAreas]);
-  };
+  const mountDefault = (arrMeals) => (
+    arrMeals.map((meal, index) => (
+      <RecipeCard
+        key={meal.idMeal}
+        imgSrc={meal.strMealThumb}
+        name={meal.strMeal}
+        id={meal.idMeal}
+        index={index}
+        path="comidas"
+      />
+    ))
+  );
 
   useEffect(() => {
-    getMeals();
-  }, []);
+    getMeals(selectedRegion);
+  }, [selectedRegion]);
 
   return (
     <div>
       <Header />
-      {region && region.length > 1 ? (
-        <AreaOptions areas={region} handleChange={setSelectedRegion} />
-      ) : (
-        <p>Carregando...</p>
-      )}
-      {recipes && FilterByRegion(recipes, selectedRegion)}
+      <AreaOptions handleChange={setSelectedRegion} />
+      {selectedRegion === 'All' && recipes.length > 1 ? mountDefault(recipes) : null}
+      {selectedRegion !== 'All' && filteredRecipes.length > 1 ? mountDefault(filteredRecipes) : null}
       <Footer />
     </div>
   );

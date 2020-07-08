@@ -45,3 +45,15 @@ export const fetchRandomMeal = async () => {
   const json = await request.json();
   return json;
 };
+
+export const listAllAreas = async () => {
+  const request = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?a=list');
+  const json = await request.json();
+  return json;
+};
+
+export const fetchFilterByArea = async (area) => {
+  const request = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`);
+  const json = await request.json();
+  return json;
+};
