@@ -8,6 +8,7 @@ import ProfilePage from './pages/ProfilePage';
 import ExplorePage from './pages/ExplorePage';
 import DetailsPage from './pages/DetailsPage';
 import ExplorePageBy from './pages/ExplorePageBy';
+import ProgressPage from './pages/ProgressPage';
 
 function App() {
   return (
@@ -16,8 +17,8 @@ function App() {
         <Route path="/explorar/comidas/ingredientes" component="" />
         <Route path="/explorar/comidas/area" component="" />
         <Route path="/explorar/bebidas/ingredientes" component="" />
-        <Route path="/comidas/:id/in-progress" component="" />
-        <Route path="/bebidas/:id/in-progress" component="" />
+        <Route path="/comidas/:id/in-progress" component={ProgressPage} />
+        <Route path="/bebidas/:id/in-progress" component={ProgressPage} />
         <Route path="/comidas/:id" component={DetailsPage} />
         <Route path="/bebidas/:id" component={DetailsPage} />
         <Route path="/explorar/comidas" component={ExplorePageBy} />
