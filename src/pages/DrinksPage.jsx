@@ -34,6 +34,7 @@ const DrinksPage = () => {
   } else if (toggleSearchBar && drinksData === null) {
     alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
   }
+
   return (
     <div>
       <Header />
