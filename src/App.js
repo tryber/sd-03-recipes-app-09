@@ -11,6 +11,7 @@ import ExplorePageByArea from './pages/ExplorePageByArea';
 import DetailsPage from './pages/DetailsPage';
 import ExploreMealIngredientPage from './pages/ExploreMealIngredientPage';
 import ExploreDrinkIngredientPage from './pages/ExploreDrinkIngredientPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/explorar" component={ExplorePage} />
         <Route path="/perfil" component={ProfilePage} />
         <Route exact path="/" component={LoginPage} />
+        <Route component={NotFoundPage} />
       </Switch>
     </center>
   );
