@@ -12,7 +12,7 @@ const createFavoriteObject = (data) => {
     id: data.id,
     type: data.type,
     area: data.area,
-    category: data.category,
+    category: data.type === 'bebida' ? data.drinkType : data.category,
     alcoholicOrNot: data.alcoholicOrNot,
     name: data.name,
     image: data.image,
@@ -28,8 +28,8 @@ const saveFavorite = (data, setIsFavorite) => {
     localStorage.setItem('favoriteRecipes', JSON.stringify(favorites));
     setIsFavorite(true);
   }
-  if (favorites.length === 0) {
-    localStorage.setItem('favoriteRecipes', JSON.stringify([data]));
+  if (!favorites) {
+    localStorage.setItem('favoriteRecipes', JSON.stringify([favoriteObject]));
     setIsFavorite(true);
   }
 };
