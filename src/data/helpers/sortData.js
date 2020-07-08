@@ -51,6 +51,7 @@ const createDrinkObject = (data, ingredients) => {
     image: data.strDrinkThumb,
     category: data.strAlcoholic,
     instructions: data.strInstructions,
+    drinkType: data.strCategory,
     ingredients,
     video: false,
   };
