@@ -1,0 +1,37 @@
+body {
+  width: 360px;
+  font-family: Roboto;
+}
+
+.details-img {
+  height: 155px;
+  left: 0px;
+  top: 0px;
+  width: 360px;
+}
+
+.details-name-wrapper {
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+}
+
+.details-name {
+  font-size: 30px;
+  display: inline;
+}
+
+.recommended-carousel {
+  display: flex;
+  flex-direction: row;
+  overflow: scroll;
+  height: 240px;
+}
+
+.recommended-card {
+  height: 240px
+}
+
+.recommended-button {
+  margin-bottom: 0;
+}
