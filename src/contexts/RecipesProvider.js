@@ -25,7 +25,7 @@ function RecipesProvider({ children }) {
     selectedCategory,
     setSelectedCategory,
     ingredientFilter,
-    setIngredientFilter
+    setIngredientFilter,
   };
 
   return (
