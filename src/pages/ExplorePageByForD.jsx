@@ -9,7 +9,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 
-function ExplorePageBy() {
+function ExplorePageByForD() {
   const { pathname } = useLocation();
   const history = useHistory();
   const { setMealsData, setDrinksData } = useContext(RecipesContext);
@@ -57,4 +57,4 @@ function ExplorePageBy() {
   );
 }
 
-export default ExplorePageBy;
+export default ExplorePageByForD;

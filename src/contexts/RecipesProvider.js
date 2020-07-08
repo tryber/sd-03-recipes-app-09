@@ -4,8 +4,8 @@ import RecipesContext from './RecipesContext';
 
 function RecipesProvider({ children }) {
   const [toggleSearchBar, setToggleSearchBar] = useState(false);
-  const [mealsData, setMealsData] = useState([]);
-  const [drinksData, setDrinksData] = useState([]);
+  const [mealsData, setMealsData] = useState(null);
+  const [drinksData, setDrinksData] = useState(null);
   const [mealsCategories, setMealsCategories] = useState([]);
   const [drinkCategories, setDrinksCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
