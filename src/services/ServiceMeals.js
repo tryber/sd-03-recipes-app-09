@@ -4,25 +4,25 @@ export const fetchMeals = async () => {
   return json;
 };
 
-export const fetchMealByIngredient = async (ingredient) => {
+export const fetchMealsByIngredient = async (ingredient) => {
   const request = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`);
   const json = await request.json();
   return json;
 };
 
-export const fetchMealByRecipeName = async (recipeName) => {
-  const request = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${recipeName}`);
+export const fetchMealsByRecipeName = async (recipeName) => {
+  const request = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${recipeName}`);
   const json = await request.json();
   return json;
 };
 
-export const fetchMealByFirstLetter = async (firstLetter) => {
-  const request = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${firstLetter}`);
+export const fetchMealsByFirstLetter = async (firstLetter) => {
+  const request = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${firstLetter}`);
   const json = await request.json();
   return json;
 };
 
-export const fetchMealCategories = async () => {
+export const fetchMealsCategories = async () => {
   const request = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list');
   const json = await request.json();
   return json;
