@@ -28,6 +28,12 @@ export const fetchDrinksCategories = async () => {
   return json;
 };
 
+export const fetchDrinksIngredientList = async () => {
+  const request = await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list');
+  const json = await request.json();
+  return json;
+};
+
 export const fetchDrinksByCategory = async (category) => {
   const request = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`);
   const json = await request.json();
