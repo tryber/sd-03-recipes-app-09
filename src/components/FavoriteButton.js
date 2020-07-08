@@ -7,14 +7,28 @@ const isFavorite = (id) => {
   return favorites ? favorites.some((recipe) => recipe.id === id) : false;
 };
 
+const createFavoriteObject = (data) => {
+  const favorite = {
+    id: data.id,
+    type: data.type,
+    area: data.area,
+    category: data.category,
+    alcoholicOrNot: data.alcoholicOrNot,
+    name: data.name,
+    image: data.image,
+  };
+  return favorite;
+};
+
 const saveFavorite = (data, setIsFavorite) => {
   const favorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
+  const favoriteObject = createFavoriteObject(data);
   if (favorites) {
-    favorites.push(data);
+    favorites.push(favoriteObject);
     localStorage.setItem('favoriteRecipes', JSON.stringify(favorites));
     setIsFavorite(true);
   }
-  if (!favorites) {
+  if (favorites.length === 0) {
     localStorage.setItem('favoriteRecipes', JSON.stringify([data]));
     setIsFavorite(true);
   }
