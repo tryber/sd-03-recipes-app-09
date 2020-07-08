@@ -5,13 +5,15 @@ import LoginPage from './pages/LoginPage';
 import MainPage from './pages/MainPage';
 import ProfilePage from './pages/ProfilePage';
 import ExplorePage from './pages/ExplorePage';
+import ExploreMealIngredientPage from './pages/ExploreMealIngredientPage';
+import ExploreDrinkIngredientPage from './pages/ExploreDrinkIngredientPage';
 
 function App() {
   return (
     <Switch>
-      <Route path="/explorar/comidas/ingredientes" component="" />
       <Route path="/explorar/comidas/area" component="" />
-      <Route path="/explorar/bebidas/ingredientes" component="" />
+      <Route path="/explorar/comidas/ingredientes" component={ExploreMealIngredientPage} />
+      <Route path="/explorar/bebidas/ingredientes" component={ExploreDrinkIngredientPage} />
       <Route path="/comidas/:id/in-progress" component="" />
       <Route path="/bebidas/:id/in-progress" component="" />
       <Route path="/comidas/:id" component="" />

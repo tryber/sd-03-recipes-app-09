@@ -28,6 +28,12 @@ export const fetchMealsCategories = async () => {
   return json;
 };
 
+export const fetchMealsIngredientList = async () => {
+  const meal = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?i=list');
+  const mealInfo = await meal.json();
+  return mealInfo;
+};
+
 export const fetchMealsByCategory = async (category) => {
   const request = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
   const json = await request.json();
