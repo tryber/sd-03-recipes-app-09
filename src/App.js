@@ -3,11 +3,11 @@ import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import LoginPage from './pages/LoginPage';
 import MealsPage from './pages/MealsPage';
-import DrinksPage from './pages/DrinksPage';
 import DetailsPage from './pages/DetailsPage';
 import ProfilePage from './pages/ProfilePage';
 import ExplorePage from './pages/ExplorePage';
 import ExplorePageBy from './pages/ExplorePageBy';
+import DrinksPage from './pages/DrinksPage';
 
 function App() {
   return (
