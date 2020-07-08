@@ -11,13 +11,13 @@ export const fetchMealsByIngredient = async (ingredient) => {
 };
 
 export const fetchMealsByRecipeName = async (recipeName) => {
-  const request = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${recipeName}`);
+  const request = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${recipeName}`);
   const json = await request.json();
   return json;
 };
 
 export const fetchMealsByFirstLetter = async (firstLetter) => {
-  const request = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${firstLetter}`);
+  const request = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${firstLetter}`);
   const json = await request.json();
   return json;
 };

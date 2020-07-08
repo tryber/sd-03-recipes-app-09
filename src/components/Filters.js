@@ -1,26 +1,41 @@
 import React, { useEffect, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
-import { fetchMealCategories } from '../services/ServiceMeal';
-import { fetchDrinkCategories } from '../services/ServiceDrinks';
+import { fetchMealsCategories } from '../services/ServiceMeals';
+import { fetchDrinksCategories } from '../services/ServiceDrinks';
 import RecipesContext from '../contexts/RecipesContext';
 
-const renderFilterButtons = (categories, selectedCategory, handler) => {
+
+const handler = (setSelectedCategory, value) => (
+setSelectedCategory((state) => (value !== state ? value : 'All'))
+);
+
+const renderFilterButtons = (categories, setSelectedCategory) => {
   if (categories.length === 0) return null;
   return (
     <div>
-      <button onClick={(e) => handler(e.target.value)} type="button">All</button>
-      {categories.map(({ strCategory }, i) => (
-        i > 4 ? null
-          : (
-            <button
-              data-testid={`${strCategory}-category-filter`}
-              type="button"
-              value={strCategory}
-              onClick={(e) => handler(e.target.value !== selectedCategory ? e.target.value : 'All')}
-            >
-              {strCategory}
-            </button>
-          )))}
+      <button
+        onClick={(e) => handler(setSelectedCategory, e.target.value)}
+        type="button"
+        data-testid={'All-category-filter'}
+        value={'All'}
+      >
+        All
+      </button>
+      {categories.map(({ strCategory }, i) =>
+        (i > 4 ? null : (
+          <button
+            key={strCategory}
+            data-testid={`${strCategory}-category-filter`}
+            type="button"
+            value={strCategory}
+            onClick={(e) =>
+              handler(setSelectedCategory, e.target.value)
+            }
+          >
+            {strCategory}
+          </button>
+        )),
+      )}
     </div>
   );
 };
@@ -31,25 +46,32 @@ const Filters = () => {
     setMealsCategories,
     drinkCategories,
     setDrinksCategories,
-    selectedCategory,
     setSelectedCategory,
   } = useContext(RecipesContext);
   const { pathname } = useLocation();
 
   useEffect(() => {
     if (pathname === '/bebidas') {
-      fetchDrinkCategories()
-        .then((response) => setDrinksCategories(response.drinks));
+      fetchDrinksCategories().then((response) =>
+        setDrinksCategories(response.drinks),
+      );
     }
-    fetchMealCategories()
-      .then((response) => setMealsCategories(response.meals));
+    fetchMealsCategories().then((response) =>
+      setMealsCategories(response.meals),
+    );
   }, []);
 
   return (
     <div>
       {pathname === '/comidas'
-        ? renderFilterButtons(mealsCategories, selectedCategory, setSelectedCategory)
-        : renderFilterButtons(drinkCategories, selectedCategory, setSelectedCategory)}
+        ? renderFilterButtons(
+            mealsCategories,
+            setSelectedCategory,
+          )
+        : renderFilterButtons(
+            drinkCategories,
+            setSelectedCategory,
+          )}
     </div>
   );
 };

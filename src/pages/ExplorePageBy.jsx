@@ -35,7 +35,7 @@ function ExplorePageBy() {
       .then((drink) => {
         const data = drink.drinks[0];
         setDrinksData([data]);
-        history.push(`/comidas/${data.idDrink}`);
+        history.push(`/bebidas/${data.idDrink}`);
       }));
   };
 
