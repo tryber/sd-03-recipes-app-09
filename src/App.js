@@ -7,6 +7,7 @@ import DrinksPage from './pages/DrinksPage';
 import ProfilePage from './pages/ProfilePage';
 import ExplorePage from './pages/ExplorePage';
 import ExplorePageBy from './pages/ExplorePageBy';
+import DonePage from './pages/DonePage';
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
       <Route path="/bebidas/:id" component="" />
       <Route path="/explorar/comidas" component={ExplorePageBy} />
       <Route path="/explorar/bebidas" component={ExplorePageBy} />
-      <Route path="/receitas-feitas" component="" />
+      <Route path="/receitas-feitas" component={DonePage} />
       <Route path="/receitas-favoritas" component="" />
       <Route path="/comidas" component={MealsPage} />
       <Route path="/bebidas" component={DrinksPage} />

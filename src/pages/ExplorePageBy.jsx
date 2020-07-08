@@ -8,7 +8,6 @@ import { fetchRandomMeal } from '../services/ServiceMeals';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-
 function ExplorePageBy() {
   const { pathname } = useLocation();
   const history = useHistory();
