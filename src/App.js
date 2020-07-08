@@ -6,6 +6,8 @@ import MealsPage from './pages/MealsPage';
 import DrinksPage from './pages/DrinksPage';
 import ProfilePage from './pages/ProfilePage';
 import ExplorePage from './pages/ExplorePage';
+import ExplorePageByForD from './pages/ExplorePageByForD';
+import ExplorePageByArea from './pages/ExplorePageByArea';
 import DetailsPage from './pages/DetailsPage';
 import ExplorePageBy from './pages/ExplorePageBy';
 import ProgressPage from './pages/ProgressPage';
@@ -15,14 +17,14 @@ function App() {
     <center>
       <Switch>
         <Route path="/explorar/comidas/ingredientes" component="" />
-        <Route path="/explorar/comidas/area" component="" />
+        <Route path="/explorar/comidas/area" component={ExplorePageByArea} />
         <Route path="/explorar/bebidas/ingredientes" component="" />
         <Route path="/comidas/:id/in-progress" component={ProgressPage} />
         <Route path="/bebidas/:id/in-progress" component={ProgressPage} />
         <Route path="/comidas/:id" component={DetailsPage} />
         <Route path="/bebidas/:id" component={DetailsPage} />
-        <Route path="/explorar/comidas" component={ExplorePageBy} />
-        <Route path="/explorar/bebidas" component={ExplorePageBy} />
+        <Route path="/explorar/comidas" component={ExplorePageByForD} />
+        <Route path="/explorar/bebidas" component={ExplorePageByForD} />
         <Route path="/receitas-feitas" component="" />
         <Route path="/receitas-favoritas" component="" />
         <Route path="/comidas" component={MealsPage} />
