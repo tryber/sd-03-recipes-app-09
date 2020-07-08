@@ -19,7 +19,7 @@ function DetailsPage(props) {
   const [data, setData] = useState({});
 
   useEffect(() => {
-    if (pathname.includes("/bebidas")) {
+    if (pathname.includes('/bebidas')) {
       fetchDrinkById(id)
         .then(({ drinks }) => sortDrinkData(drinks[0]))
         .then((result) => setData(result));
