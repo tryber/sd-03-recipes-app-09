@@ -18,12 +18,8 @@ export default function ExplorePageByArea() {
       return setRecipesData([...meals.map((meal) => meal).slice(0, 12)]);
     }
 
-    if (region !== 'All') {
-      const { meals } = await fetchFilterByArea(region);
-      return setFilteredRecipes([...meals.map((meal) => meal).slice(0, 12)]);
-    }
-
-    return null;
+    const { meals } = await fetchFilterByArea(region);
+    return setFilteredRecipes([...meals.map((meal) => meal).slice(0, 12)]);
   };
 
   const mountDefault = (arrMeals) => (
