@@ -70,7 +70,6 @@ const renderVideo = (video, name) => {
 };
 
 const DetailsContent = ({ data }) => {
-  console.log(data);
   if (data) {
     return (
       <div>
@@ -85,20 +84,18 @@ const DetailsContent = ({ data }) => {
 };
 
 DetailsContent.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      alcoholicOrNot: PropTypes.string,
-      area: PropTypes.string,
-      category: PropTypes.string,
-      id: PropTypes.string,
-      image: PropTypes.string,
-      ingredients: PropTypes.arrayOf(PropTypes.string),
-      instructions: PropTypes.string,
-      name: PropTypes.string,
-      type: PropTypes.string,
-      video: PropTypes.string,
-    })
-  ),
+  data: PropTypes.shape({
+    alcoholicOrNot: PropTypes.string,
+    area: PropTypes.string,
+    category: PropTypes.string,
+    id: PropTypes.string,
+    image: PropTypes.string,
+    ingredients: PropTypes.arrayOf(PropTypes.string),
+    instructions: PropTypes.string,
+    name: PropTypes.string,
+    type: PropTypes.string,
+    video: PropTypes.string,
+  }).isRequired,
 };
 
 export default DetailsContent;

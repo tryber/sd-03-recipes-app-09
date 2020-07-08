@@ -1,15 +1,13 @@
-import React, { useEffect, useContext } from "react";
-import { useLocation } from "react-router-dom";
-import PropTypes from "prop-types";
-import DetailsContent from "../components/DetailsContent";
-import DetailsRecommended from "../components/DetailsRecommended";
-import DetailsButton from "../components/DetailsButton";
-import { fetchMealById } from "../services/ServiceMeals";
-import { fetchDrinkById } from "../services/ServiceDrinks";
-import RecipesContext from "../contexts/RecipesContext";
-import { sortDrinkData, sortMealData } from "../data/helpers/sortData";
-import "./DetailsPage.css";
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import DetailsContent from '../components/DetailsContent';
+import DetailsRecommended from '../components/DetailsRecommended';
+import DetailsButton from '../components/DetailsButton';
+import { fetchMealById } from '../services/ServiceMeals';
+import { fetchDrinkById } from '../services/ServiceDrinks';
+import { sortDrinkData, sortMealData } from '../data/helpers/sortData';
+import './DetailsPage.css';
 
 function DetailsPage(props) {
   const {
@@ -18,7 +16,7 @@ function DetailsPage(props) {
     },
   } = props;
   const { pathname } = useLocation();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({});
 
   useEffect(() => {
     if (pathname.includes("/bebidas")) {
