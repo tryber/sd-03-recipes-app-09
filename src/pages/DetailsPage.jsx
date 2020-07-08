@@ -1,9 +1,9 @@
 import React from 'react';
 
 const DetailsPage = () => (
-  <h1>
-    Details Page
-  </h1>
+  <div>
+    <h1>Details Page</h1>
+  </div>
 );
 
 export default DetailsPage;

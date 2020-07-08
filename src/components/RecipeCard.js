@@ -18,6 +18,7 @@ function RecipeCard({ imgSrc, name, id, index, path }) {
     </div>
   );
 }
+
 RecipeCard.propTypes = {
   imgSrc: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
