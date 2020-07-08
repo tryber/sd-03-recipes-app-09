@@ -9,14 +9,16 @@ import ExplorePage from './pages/ExplorePage';
 import ExplorePageByForD from './pages/ExplorePageByForD';
 import ExplorePageByArea from './pages/ExplorePageByArea';
 import DetailsPage from './pages/DetailsPage';
+import ExploreMealIngredientPage from './pages/ExploreMealIngredientPage';
+import ExploreDrinkIngredientPage from './pages/ExploreDrinkIngredientPage';
 
 function App() {
   return (
     <center>
       <Switch>
-        <Route path="/explorar/comidas/ingredientes" component="" />
         <Route path="/explorar/comidas/area" component={ExplorePageByArea} />
-        <Route path="/explorar/bebidas/ingredientes" component="" />
+        <Route path="/explorar/comidas/ingredientes" component={ExploreMealIngredientPage} />
+        <Route path="/explorar/bebidas/ingredientes" component={ExploreDrinkIngredientPage} />
         <Route path="/comidas/:id/in-progress" component="" />
         <Route path="/bebidas/:id/in-progress" component="" />
         <Route path="/comidas/:id" component={DetailsPage} />
