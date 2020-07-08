@@ -1,15 +1,4 @@
-import React from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-
-const MealsPage = () => (
-  <div>
-    <Header />
-    <p>Tela de Comidas</p>
-    <Footer />
-  </div>
-);
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect }  from 'react';
 import RecipesContext from '../contexts/RecipesContext';
 import { fetchMeals, fetchMealsByCategory } from '../services/ServiceMeals';
 import Header from '../components/Header';
