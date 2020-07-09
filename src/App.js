@@ -12,6 +12,8 @@ import DetailsPage from './pages/DetailsPage';
 import ExploreMealIngredientPage from './pages/ExploreMealIngredientPage';
 import ExploreDrinkIngredientPage from './pages/ExploreDrinkIngredientPage';
 import NotFoundPage from './pages/NotFoundPage';
+import DonePage from './pages/DonePage';
+import FavoritesPage from './pages/FavoritesPage';
 
 function App() {
   return (
@@ -27,8 +29,8 @@ function App() {
         <Route path="/bebidas/:id" component={DetailsPage} />
         <Route path="/explorar/comidas" component={ExplorePageByForD} />
         <Route path="/explorar/bebidas" component={ExplorePageByForD} />
-        <Route path="/receitas-feitas" component="" />
-        <Route path="/receitas-favoritas" component="" />
+        <Route path="/receitas-feitas" component={DonePage} />
+        <Route path="/receitas-favoritas" component={FavoritesPage} />
         <Route path="/comidas" component={MealsPage} />
         <Route path="/bebidas" component={DrinksPage} />
         <Route path="/explorar" component={ExplorePage} />
