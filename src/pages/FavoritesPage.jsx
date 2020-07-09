@@ -6,6 +6,6 @@ const FavoritesPage = () => (
     <Header />
     <h2>Página de Receitas Favoritas</h2>
   </div>
-)
+);
 
 export default FavoritesPage;

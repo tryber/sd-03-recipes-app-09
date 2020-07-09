@@ -6,6 +6,6 @@ const DonePage = () => (
     <Header />
     <h2>Página de Receitas Feitas</h2>
   </div>
-)
+);
 
 export default DonePage;
