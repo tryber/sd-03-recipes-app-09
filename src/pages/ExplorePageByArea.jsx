@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import AreaOptions from '../components/AreaOptions';
 import RecipeCard from '../components/RecipeCard';
+import './ExplorePage.css';
 
 export default function ExplorePageByArea() {
   const [recipes, setRecipesData] = useState([]);
@@ -32,9 +33,11 @@ export default function ExplorePageByArea() {
   return (
     <div>
       <Header />
-      <AreaOptions handleChange={setSelectedRegion} />
-      {selectedRegion === 'All' && recipes.length > 1 ? mountDefault(recipes) : null}
-      {selectedRegion !== 'All' && filteredRecipes.length > 1 ? mountDefault(filteredRecipes) : null}
+      <div className="container explore-page-area-main">
+        <AreaOptions handleChange={setSelectedRegion} />
+        {selectedRegion === 'All' && recipes.length > 1 ? mountDefault(recipes) : null}
+        {selectedRegion !== 'All' && filteredRecipes.length > 1 ? mountDefault(filteredRecipes) : null}
+      </div>
       <Footer />
     </div>
   );

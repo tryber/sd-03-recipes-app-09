@@ -4,3 +4,16 @@
   justify-content: space-between;
   padding: 2rem;
 }
+
+.explore-ingredient-button {
+  border: none;
+  background-color: white;
+}
+
+.explore-page-area-main {
+  padding: 1rem;
+}
+
+.select-options {
+  margin: 1rem;
+}

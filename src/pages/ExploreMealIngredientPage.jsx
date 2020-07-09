@@ -16,25 +16,29 @@ const ExploreMealIngredientPage = () => {
   return (
     <div>
       <Header />
-      <div>
+      <div className="container">
         {ingredients.reduce((arr, e, index) => {
           if (index < 12) {
             return [
               ...arr,
-              <Link to="/comidas">
-                <button
-                  data-testid={`${index}-ingredient-card`}
-                  onClick={() => setIngredientFilter(e.strIngredient)}
-                >
-                  <img
-                    src={`https://www.themealdb.com/images/ingredients/${e.strIngredient}-Small.png`}
-                    alt="thumbnail"
-                    width="110px"
-                    data-testid={`${index}-card-img`}
-                  />
-                  <h5 data-testid={`${index}-card-name`}>{e.strIngredient}</h5>
-                </button>
-              </Link>,
+              <div className="box">
+                <Link to="/comidas">
+                  <button
+                    className="explore-ingredient-button"
+                    type="button"
+                    data-testid={`${index}-ingredient-card`}
+                    onClick={() => setIngredientFilter(e.strIngredient)}
+                  >
+                    <img
+                      src={`https://www.themealdb.com/images/ingredients/${e.strIngredient}-Small.png`}
+                      alt="thumbnail"
+                      width="110px"
+                      data-testid={`${index}-card-img`}
+                    />
+                    <h5 data-testid={`${index}-card-name`}>{e.strIngredient}</h5>
+                  </button>
+                </Link>
+              </div>,
             ];
           }
           return arr;
