@@ -30,7 +30,7 @@ const renderFilterButtons = (categories, setSelectedCategory) => {
           >
             {strCategory}
           </button>
-        )
+        ),
       )}
     </div>
   );
@@ -50,11 +50,11 @@ const Filters = () => {
   useEffect(() => {
     if (pathname === '/bebidas') {
       fetchDrinksCategories().then((response) =>
-        setDrinksCategories(response.drinks)
+        setDrinksCategories(response.drinks),
       );
     }
     fetchMealsCategories().then((response) =>
-      setMealsCategories(response.meals)
+      setMealsCategories(response.meals),
     );
   }, []);
 
@@ -64,7 +64,7 @@ const Filters = () => {
         ? renderFilterButtons(
             mealsCategories,
             setSelectedCategory,
-            setIsIngredient(false)
+            setIsIngredient(false),
           )
         : renderFilterButtons(
             drinkCategories,

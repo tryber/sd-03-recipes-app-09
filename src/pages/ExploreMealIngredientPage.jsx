@@ -18,7 +18,7 @@ const ExploreMealIngredientPage = () => {
       <Header />
       <div>
         {ingredients.reduce((arr, e, index) => {
-          for (let i = 0; index < 12; i++) {
+          for (let i = 0; index < 12; i + 1) {
             return [
               ...arr,
               <Link to="/comidas">
