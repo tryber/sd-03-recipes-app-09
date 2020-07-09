@@ -16,15 +16,21 @@ code {
   background-color: #C4C4C4;;
   color: black;
   min-height: 50px;
-  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
 }
 
-.header-title {
-  text-transform: capitalize;
+.header-img {
+  margin: 0;
+  height: 40px;
+}
+
+.profile-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .searchbar {

@@ -45,7 +45,8 @@ const removeFavorite = (id, setIsFavorite) => {
   return setIsFavorite(false);
 };
 
-const FavoriteButton = (data) => {
+const FavoriteButton = (props) => {
+  const data = props;
   const [favorite, setFavorite] = useState(isFavorite(data.id));
   return (
     <button

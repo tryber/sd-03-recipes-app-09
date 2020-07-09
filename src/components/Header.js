@@ -25,9 +25,9 @@ function Header() {
 
     if (checkForbidden) {
       return (
-        <div className="header">
+        <div className="container is-fluid header">
           <Link to="/perfil">
-            <img data-testid="profile-top-btn" src={profileIcon} alt="Ícone de perfil" />
+            <img data-testid="profile-top-btn" src={profileIcon} alt="Ícone de perfil" className="header-img" />
           </Link>
           <p className="header-title" data-testid="page-title">{title}</p>
           <p />
@@ -36,16 +36,16 @@ function Header() {
     }
 
     return (
-      <div className="header">
+      <div className="container is-fluid header">
         <Link to="/perfil">
-          <img data-testid="profile-top-btn" src={profileIcon} alt="Ícone de perfil" />
+          <img data-testid="profile-top-btn" src={profileIcon} alt="Ícone de perfil" className="header-img" />
         </Link>
-        <p data-testid="page-title" className="header-title">{title}</p>
+        <p data-testid="page-title" className="is-capitalized title">{title}</p>
         <button
           type="button"
           onClick={() => setToggleSearchBar(!toggleSearchBar)}
         >
-          <img data-testid="search-top-btn" src={searchIcon} alt="Ícone de busca" />
+          <img data-testid="search-top-btn" src={searchIcon} alt="Ícone de busca" className="header-img" />
         </button>
         { toggleSearchBar && <SearchBar /> }
       </div>
