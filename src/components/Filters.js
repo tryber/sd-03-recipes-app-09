@@ -20,7 +20,7 @@ const renderFilterButtons = (categories, setSelectedCategory) => {
         All
       </button>
       {categories.map(({ strCategory }, i) =>
-        i > 4 ? null : (
+        (i > 4 ? null : (
           <button
             key={strCategory}
             data-testid={`${strCategory}-category-filter`}
@@ -30,7 +30,7 @@ const renderFilterButtons = (categories, setSelectedCategory) => {
           >
             {strCategory}
           </button>
-        ),
+        )),
       )}
     </div>
   );
