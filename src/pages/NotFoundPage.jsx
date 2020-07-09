@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 
-const NotFoundPage = () => (
-  <h1>NOT FOUND PAGE</h1>
-);
+const NotFoundPage = () => {
+  const [showNotFound, setShowNotFound] = useState(true);
+  setTimeout(() => setShowNotFound(false), 5000);
+  if (showNotFound) return <h1>Not Found</h1>;
+  else return <Redirect to='/' />
+};
 
 export default NotFoundPage;

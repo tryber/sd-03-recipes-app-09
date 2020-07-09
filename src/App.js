@@ -18,6 +18,7 @@ function App() {
     <center>
       <Switch>
         <Route path="/explorar/comidas/area" component={ExplorePageByArea} />
+        <Route path="/explorar/bebidas/area" component={NotFoundPage} />
         <Route path="/explorar/comidas/ingredientes" component={ExploreMealIngredientPage} />
         <Route path="/explorar/bebidas/ingredientes" component={ExploreDrinkIngredientPage} />
         <Route path="/comidas/:id/in-progress" component="" />
