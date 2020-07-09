@@ -13,19 +13,22 @@ const DrinksPage = () => {
     setDrinksData,
     toggleSearchBar,
     selectedCategory,
+    isIngredient,
   } = useContext(RecipesContext);
 
   useEffect(() => {
-    if (selectedCategory === 'All') {
-      fetchDrinks().then(
-        ({ drinks }) => setDrinksData(drinks),
-        setDrinksData([]),
-      );
-    } else {
-      fetchDrinksByCategory(selectedCategory).then(
-        ({ drinks }) => setDrinksData(drinks),
-        setDrinksData([]),
-      );
+    if (isIngredient === false) {
+      if (selectedCategory === 'All') {
+        fetchDrinks().then(
+          ({ drinks }) => setDrinksData(drinks),
+          setDrinksData([])
+        );
+      } else {
+        fetchDrinksByCategory(selectedCategory).then(
+          ({ drinks }) => setDrinksData(drinks),
+          setDrinksData([])
+        );
+      }
     }
   }, [selectedCategory]);
 

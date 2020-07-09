@@ -13,16 +13,19 @@ const MealsPage = () => {
     setMealsData,
     toggleSearchBar,
     selectedCategory,
+    isIngredient,
   } = useContext(RecipesContext);
 
   useEffect(() => {
-    if (selectedCategory === 'All') {
-      fetchMeals().then(({ meals }) => setMealsData(meals), setMealsData([]));
-    } else {
-      fetchMealsByCategory(selectedCategory).then(
-        ({ meals }) => setMealsData(meals),
-        setMealsData([]),
-      );
+    if (isIngredient === false) {
+      if (selectedCategory === 'All') {
+        fetchMeals().then(({ meals }) => setMealsData(meals), setMealsData([]));
+      } else {
+        fetchMealsByCategory(selectedCategory).then(
+          ({ meals }) => setMealsData(meals),
+          setMealsData([]),
+        );
+      }
     }
   }, [selectedCategory]);
 

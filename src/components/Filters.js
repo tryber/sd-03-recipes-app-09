@@ -4,10 +4,8 @@ import { fetchMealsCategories } from '../services/ServiceMeals';
 import { fetchDrinksCategories } from '../services/ServiceDrinks';
 import RecipesContext from '../contexts/RecipesContext';
 
-
-const handler = (setSelectedCategory, value) => (
-setSelectedCategory((state) => (value !== state ? value : 'All'))
-);
+const handler = (setSelectedCategory, value) =>
+  setSelectedCategory((state) => (value !== state ? value : 'All'));
 
 const renderFilterButtons = (categories, setSelectedCategory) => {
   if (categories.length === 0) return null;
@@ -22,19 +20,17 @@ const renderFilterButtons = (categories, setSelectedCategory) => {
         All
       </button>
       {categories.map(({ strCategory }, i) =>
-        (i > 4 ? null : (
+        i > 4 ? null : (
           <button
             key={strCategory}
             data-testid={`${strCategory}-category-filter`}
             type="button"
             value={strCategory}
-            onClick={(e) =>
-              handler(setSelectedCategory, e.target.value)
-            }
+            onClick={(e) => handler(setSelectedCategory, e.target.value)}
           >
             {strCategory}
           </button>
-        )),
+        )
       )}
     </div>
   );
@@ -47,17 +43,18 @@ const Filters = () => {
     drinkCategories,
     setDrinksCategories,
     setSelectedCategory,
+    setIsIngredient,
   } = useContext(RecipesContext);
   const { pathname } = useLocation();
 
   useEffect(() => {
     if (pathname === '/bebidas') {
       fetchDrinksCategories().then((response) =>
-        setDrinksCategories(response.drinks),
+        setDrinksCategories(response.drinks)
       );
     }
     fetchMealsCategories().then((response) =>
-      setMealsCategories(response.meals),
+      setMealsCategories(response.meals)
     );
   }, []);
 
@@ -67,10 +64,12 @@ const Filters = () => {
         ? renderFilterButtons(
             mealsCategories,
             setSelectedCategory,
+            setIsIngredient(false)
           )
         : renderFilterButtons(
             drinkCategories,
             setSelectedCategory,
+            setIsIngredient(false),
           )}
     </div>
   );
