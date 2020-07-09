@@ -7,7 +7,7 @@ import { fetchRandomMeal } from '../services/ServiceMeals';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-
+import './ExplorePage.css';
 
 function ExplorePageByForD() {
   const { pathname } = useLocation();
@@ -22,35 +22,53 @@ function ExplorePageByForD() {
   const surpriseFunction = () => {
     if (pathname === '/explorar/comidas') {
       const randomMeal = fetchRandomMeal();
-      return (randomMeal
-        .then((meal) => {
-          const data = meal.meals[0];
-          setMealsData([data]);
-          history.push(`/comidas/${data.idMeal}`);
-        }));
+      return randomMeal.then((meal) => {
+        const data = meal.meals[0];
+        setMealsData([data]);
+        history.push(`/comidas/${data.idMeal}`);
+      });
     }
 
     const randomDrink = fetchRandomDrink();
-    return (randomDrink
-      .then((drink) => {
-        const data = drink.drinks[0];
-        setDrinksData([data]);
-        history.push(`/bebidas/${data.idDrink}`);
-      }));
+    return randomDrink.then((drink) => {
+      const data = drink.drinks[0];
+      setDrinksData([data]);
+      history.push(`/bebidas/${data.idDrink}`);
+    });
   };
 
   return (
     <div>
       <Header />
-      <div>
+      <div className="buttons explore-buttons">
         <Link to={verifyRouteByIngredients()}>
-          <button data-testid="explore-by-ingredient">Por Ingredientes</button>
+          <button
+            type="button"
+            data-testid="explore-by-ingredient"
+            className="button is-danger"
+          >
+            Por Ingredientes
+          </button>
         </Link>
-        {(pathname === '/explorar/comidas') &&
+        {pathname === '/explorar/comidas' && (
           <Link to="/explorar/comidas/area">
-            <button data-testid="explore-by-area">Por Local de Origem</button>
-          </Link>}
-        <button data-testid="explore-surprise" onClick={surpriseFunction}>Me Surpreenda!</button>
+            <button
+              type="button"
+              className="button is-danger"
+              data-testid="explore-by-area"
+            >
+              Por Local de Origem
+            </button>
+          </Link>
+        )}
+        <button
+          type="button"
+          className="button is-danger"
+          data-testid="explore-surprise"
+          onClick={surpriseFunction}
+        >
+          Me Surpreenda!
+        </button>
       </div>
       <Footer />
     </div>
