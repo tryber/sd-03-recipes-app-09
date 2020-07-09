@@ -1,0 +1,46 @@
+.meals-footer {
+  height: 80px;
+  background-color: tomato;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.search-button {
+  background-color: tomato;
+  border: tomato;
+  height: 50px;
+  width: 60px;
+}
+
+.header {
+  background-color: tomato;
+  height: 80px;
+  width: 100%;
+}
+
+.meals-page-wrapper {
+  width: 100%;
+}
+
+.filter-button {
+  background-color: tomato;
+  font-size: 16px;
+}
+
+.filters-wrapper {
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.card-link {
+  color: black;
+  font-size: 20px;
+}
+
+.img {
+border-radius: 12px;
+width: fit-content;
+}

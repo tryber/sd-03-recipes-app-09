@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import RecipesContext from '../contexts/RecipesContext';
+import './LoginPage.css';
 
 const setLocalStorage = (email) => {
   localStorage.setItem('mealsToken', 1);
@@ -25,8 +26,9 @@ const LoginPage = () => {
 
   return (
     <form>
-      <h1>Login Page</h1>
+      <h1 className="login-header">Recipes App</h1>
       <input
+        className="input is-danger"
         placeholder="Email"
         type="email"
         data-testid="email-input"
@@ -36,6 +38,7 @@ const LoginPage = () => {
       />
       <br />
       <input
+        className="input is-danger"
         placeholder="Password"
         type="password"
         data-testid="password-input"
@@ -46,6 +49,7 @@ const LoginPage = () => {
       <br />
       <Link to="/comidas">
         <button
+          className="login-button button is-danger is-medium is-rounded"
           type="submit"
           data-testid="login-submit-btn"
           disabled={!validEmail(email) || password.length <= 6}

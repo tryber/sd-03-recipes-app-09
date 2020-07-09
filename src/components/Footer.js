@@ -7,7 +7,7 @@ import exploreIcon from '../images/exploreIcon.svg';
 export class Footer extends Component {
   render() {
     return (
-      <footer className="footer" data-testid="footer">
+      <footer className="box meals-footer" data-testid="footer">
         <Link to="/bebidas">
           <img
             src={drinkIcon}
@@ -24,6 +24,7 @@ export class Footer extends Component {
         </Link>
         <Link to="/comidas">
           <img
+            class-name="profile-icon"
             src={mealIcon}
             alt="Ícone de perfil"
             data-testid="food-bottom-btn"

@@ -3,34 +3,73 @@ body {
 }
 
 .details-img {
-  height: 155px;
+  height: 180px;
   left: 0;
   top: 0;
   width: 360px;
+  border-radius: 10px;
 }
 
 .details-name-wrapper {
   display: flex;
   flex-direction: row;
   height: 50px;
+  justify-content: space-between;
+  flex-wrap: nowrap;
 }
 
-.details-name {
-  display: inline;
-  font-size: 30px;
-}
 
 .recommended-carousel {
   display: flex;
   flex-direction: row;
   height: 240px;
   overflow: scroll;
+  margin-bottom: 60px;
 }
 
 .recommended-card {
   height: 240px;
 }
 
-.recommended-button {
+.details-button {
   margin-bottom: 0;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+}
+
+.details-button-link {
+  color: white;
+}
+
+.details-title {
+  color: black;
+  font-size: 24px;
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.category {
+  margin-bottom: 24px;
+  color:grey;
+  margin-top: 0px; 
+}
+
+.ingredients-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 18px;
+}
+
+.instructions {
+  text-align: justify;
+  margin-bottom: 18px;
+}
+
+.ingredient-list {
+  margin-bottom: 18px;
+}
+
+.button-wrapper {
+  text-align: left;
 }

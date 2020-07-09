@@ -25,7 +25,7 @@ function Header() {
 
     if (checkForbidden) {
       return (
-        <div className="header">
+        <div className="box header">
           <Link to="/perfil">
             <img data-testid="profile-top-btn" src={profileIcon} alt="Ícone de perfil" />
           </Link>
@@ -36,12 +36,13 @@ function Header() {
     }
 
     return (
-      <div className="header">
+      <div className=" box header">
         <Link to="/perfil">
           <img data-testid="profile-top-btn" src={profileIcon} alt="Ícone de perfil" />
         </Link>
         <p data-testid="page-title" className="header-title">{title}</p>
         <button
+          className="button search-button"
           type="button"
           onClick={() => setToggleSearchBar(!toggleSearchBar)}
         >

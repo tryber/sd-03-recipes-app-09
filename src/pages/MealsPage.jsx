@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import GetRecipesCards from '../components/GetRecipesCards';
 import RedirectFunc from '../data/RedirectFunc';
 import Filters from '../components/Filters';
+import './MealsPage.css';
 
 const MealsPage = () => {
   const {
@@ -32,7 +33,7 @@ const MealsPage = () => {
     alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
   }
   return (
-    <div>
+    <div className="meals-page-wrapper">
       <Header />
       <Filters />
       <GetRecipesCards />

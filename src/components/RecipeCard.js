@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 function RecipeCard({ imgSrc, name, id, index, path }) {
   return (
-    <div data-testid={`${index}-recipe-card`}>
-      <Link to={`/${path}/${id}`}>
+    <div className="box" data-testid={`${index}-recipe-card`}>
+      <Link className="card-link" to={`/${path}/${id}`}>
         <img
           data-testid={`${index}-card-img`}
           className="img"
