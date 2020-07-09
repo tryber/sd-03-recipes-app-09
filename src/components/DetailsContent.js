@@ -15,8 +15,8 @@ const renderDetailsHeader = (data) => (
     <div id="title-wrapper" className="details-name-wrapper">
       <p data-testid="recipe-title" className="title">{data.name}</p>
       <div>
-      {ShareButton()}
-      {FavoriteButton(data)}
+        {ShareButton()}
+        {FavoriteButton(data)}
       </div>
     </div>
     <div>

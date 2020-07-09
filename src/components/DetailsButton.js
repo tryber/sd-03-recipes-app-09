@@ -31,7 +31,11 @@ const DetailsButton = () => {
     isRecipeDone(id) ? null
       : (
         <div className="button-wrapper">
-          <button className="button is-danger details-button is-medium" type="button" data-testid="start-recipe-btn">
+          <button
+            className="button is-danger details-button is-medium"
+            type="button"
+            data-testid="start-recipe-btn"
+          >
             <Link className="details-button-link" to={`${path}/${id}/in-progress`}>
               {!isRecipeInProgress(id) ? 'Iniciar Receita' : 'Continuar Receita'}
             </Link>

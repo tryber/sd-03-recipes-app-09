@@ -3,11 +3,11 @@ body {
 }
 
 .details-img {
+  border-radius: 10px;
   height: 180px;
   left: 0;
   top: 0;
   width: 360px;
-  border-radius: 10px;
 }
 
 .details-name-wrapper {
@@ -15,7 +15,6 @@ body {
   flex-direction: row;
   height: 50px;
   justify-content: space-between;
-  flex-wrap: nowrap;
 }
 
 
@@ -23,8 +22,8 @@ body {
   display: flex;
   flex-direction: row;
   height: 240px;
-  overflow: scroll;
   margin-bottom: 60px;
+  overflow: scroll;
 }
 
 .recommended-card {
@@ -32,9 +31,9 @@ body {
 }
 
 .details-button {
+  bottom: 0;
   margin-bottom: 0;
   position: fixed;
-  bottom: 0px;
   width: 100%;
 }
 
@@ -45,25 +44,25 @@ body {
 .details-title {
   color: black;
   font-size: 24px;
-  text-align: left;
   margin-bottom: 24px;
+  text-align: left;
 }
 
 .category {
+  color: grey;
   margin-bottom: 24px;
-  color:grey;
-  margin-top: 0px; 
+  margin-top: 0; 
 }
 
 .ingredients-title {
-  text-align: center;
   font-size: 24px;
   margin-bottom: 18px;
+  text-align: center;
 }
 
 .instructions {
-  text-align: justify;
   margin-bottom: 18px;
+  text-align: justify;
 }
 
 .ingredient-list {

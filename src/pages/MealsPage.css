@@ -1,11 +1,11 @@
 .meals-footer {
-  height: 80px;
   background-color: tomato;
-  position: fixed;
   bottom: 0;
-  width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  height: 80px;
+  justify-content: space-around;
+  position: fixed;
+  width: 100%;
 }
 
 .search-button {
@@ -18,7 +18,7 @@
 .header {
   background-color: tomato;
   height: 80px;
-  width: 100%;
+  width: 100% !important;
 }
 
 .meals-page-wrapper {
@@ -41,6 +41,6 @@
 }
 
 .img {
-border-radius: 12px;
-width: fit-content;
+  border-radius: 12px;
+  width: fit-content;
 }

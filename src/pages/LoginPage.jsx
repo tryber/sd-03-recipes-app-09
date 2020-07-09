@@ -17,13 +17,11 @@ const LoginPage = () => {
     const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     return !!email && typeof email === 'string' && !!email.match(emailRegex);
   };
-
   useEffect(() => {
     console.log('login');
     setDrinksData([]);
     setMealsData([]);
   }, []);
-
   return (
     <form>
       <h1 className="login-header">Recipes App</h1>
@@ -46,7 +44,6 @@ const LoginPage = () => {
         id="password"
         onChange={(e) => setPassword(e.target.value)}
       />
-      <br />
       <Link to="/comidas">
         <button
           className="login-button button is-danger is-medium is-rounded"

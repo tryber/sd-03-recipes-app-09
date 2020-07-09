@@ -7,7 +7,7 @@ import searchIcon from '../images/searchIcon.svg';
 import { patterns, forbiddenPlacesForSearchBar } from '../data/Data';
 
 import SearchBar from './SearchBar';
-
+import '../pages/MealsPage.css'
 function Header() {
   const CheckLocation = () => {
     const { pathname } = useLocation();
@@ -53,7 +53,7 @@ function Header() {
     );
   };
 
-  return <div>{CheckLocation()}</div>;
+  return <div className="header box">{CheckLocation()}</div>;
 }
 
 export default Header;
