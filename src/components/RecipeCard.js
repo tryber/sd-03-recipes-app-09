@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import RecipesContext from '../contexts/RecipesContext';
 
-function RecipeCard({ imgSrc, name, id, index, path }) {
+function RecipeCard({
+  imgSrc, name, id, index, path,
+}) {
+  const { setMealsData, setDrinksData } = useContext(RecipesContext);
   return (
     <div className="box" data-testid={`${index}-recipe-card`}>
-      <Link className="card-link" to={`/${path}/${id}`}>
+      <Link onClick={() => { setDrinksData(null); setMealsData(null); }} className="card-link" to={`/${path}/${id}`}>
         <img
           data-testid={`${index}-card-img`}
           className="img"
