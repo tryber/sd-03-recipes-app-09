@@ -20,7 +20,12 @@ const ShareButton = () => {
   const { pathname } = useLocation();
   return (
     <div id="share-button-wrapper">
-      <button id="share-button" data-testid="share-btn" type="button" onClick={() => copyLinkToClipboard(pathname)}>
+      <button
+        id="share-button"
+        data-testid="share-btn"
+        type="button"
+        onClick={() => copyLinkToClipboard(pathname)}
+      >
         <img alt="share-icon" src={shareIcon} />
       </button>
     </div>
