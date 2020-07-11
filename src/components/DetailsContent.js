@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import ReactPlayer from 'react-player/youtube';
 import { useLocation } from 'react-router-dom';
 import RecipesContext from '../contexts/RecipesContext';
 import ShareButton from './ShareButton';
@@ -47,15 +48,17 @@ const renderInstructions = (instructions) => (
 );
 
 const renderVideo = (video, name) => {
+  console.log(video);
   if (video) {
     return (
       <div>
         <h3>Video</h3>
-        <iframe
+        <ReactPlayer
           data-testid="video"
           title={`${name} recipe`}
           width="360"
-          src={video}
+          height="250"
+          url={video}
         />
       </div>
     );
