@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchDrinksIngredientList } from '../services/ServiceDrinks';
+import { fetchDrinksIngredientList, fetchDrinksByIngredient } from '../services/ServiceDrinks';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import RecipesContext from '../contexts/RecipesContext';
 
 const ExploreDrinkIngredientPage = () => {
   const [ingredients, setIngredients] = useState([]);
-  const { setIngredientFilter } = useContext(RecipesContext);
+  const { setIsIngredient, setDrinksData } = useContext(RecipesContext);
 
   useEffect(() => {
     fetchDrinksIngredientList().then((e) => setIngredients(e.drinks));
@@ -18,13 +18,15 @@ const ExploreDrinkIngredientPage = () => {
       <Header />
       <div>
         {ingredients.reduce((arr, e, index) => {
-          if (index < 12) {
+          for (let i = 0; index < 12; i + 1) {
             return [
               ...arr,
               <Link to="/bebidas">
                 <button
                   data-testid={`${index}-ingredient-card`}
-                  onClick={() => setIngredientFilter(e.strIngredient1)}
+                  onClick={() => fetchDrinksByIngredient(e.strIngredient1).then(({ drinks }) =>
+                  setDrinksData(drinks), setIsIngredient(true),
+                  )}
                 >
                   <img
                     src={`https://www.thecocktaildb.com/images/ingredients/${e.strIngredient1}-Small.png`}
