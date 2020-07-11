@@ -10,6 +10,7 @@ function RecipesProvider({ children }) {
   const [drinkCategories, setDrinksCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [ingredientFilter, setIngredientFilter] = useState([]);
+  const [isIngredient, setIsIngredient] = useState(false);
 
   const contextValue = {
     toggleSearchBar,
@@ -26,6 +27,8 @@ function RecipesProvider({ children }) {
     setSelectedCategory,
     ingredientFilter,
     setIngredientFilter,
+    isIngredient,
+    setIsIngredient,
   };
 
   return (
