@@ -1,6 +1,6 @@
-import React from "react";
-import { MealCard, DrinkCard } from "../components/DoneCard";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { MealCard, DrinkCard } from '../components/DoneCard';
+import { Link } from 'react-router-dom';
 
 const GetDrinks = (drinkRecipes) =>
   drinkRecipes.map((recipe, index) => (
@@ -38,18 +38,18 @@ const GetMeals = (mealsRecipes) =>
 
 const DonePageCotent = ({ category }) => {
   console.log(category);
-  const doneRecipes = JSON.parse(localStorage.getItem("doneRecipes"));
+  const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
   console.log(doneRecipes);
   const drinkRecipes = doneRecipes
-    ? doneRecipes.filter(({ type }) => type === "bebida")
+    ? doneRecipes.filter(({ type }) => type === 'bebida')
     : [];
   const mealsRecipes = doneRecipes
-    ? doneRecipes.filter(({ type }) => type === "bebida")
+    ? doneRecipes.filter(({ type }) => type === 'bebida')
     : [];
 
   if (doneRecipes) {
     return doneRecipes.map((recipe, index) =>
-      recipe.type === "comida" ? (
+      recipe.type === 'comida' ? (
         <div key={recipe.id}>
           <Link to={`/comidas/${recipe.id}`}>
             <MealCard
@@ -81,7 +81,7 @@ const DonePageCotent = ({ category }) => {
     );
   } else if (category === "bebida" && drinkRecipes) {
     return GetDrinks(drinkRecipes);
-  } else if (category === "comida") {
+  } else if (category === "comida" && mealsRecipes) {
     return GetMeals(mealsRecipes && mealsRecipes);
   }
   return <p>Nenhuma receita favorita...</p>;

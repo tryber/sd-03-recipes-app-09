@@ -6,6 +6,7 @@ export const MealCard = ({ index, image, area, category, name, doneDate, tags })
   <div>
     <img
       className="img"
+      alt={name}
       src={image}
       data-testid={`${index}-horizontal-image`}
     />
@@ -32,6 +33,7 @@ export const DrinkCard = ({ index, image, alcoholicOrNot, name, doneDate }) => (
     <img
       className="img"
       src={image}
+      alt={name}
       data-testid={`${index}-horizontal-image`}
     />
     <p data-testid={`${index}-horizontal-top-text`}>{alcoholicOrNot}</p>
@@ -51,9 +53,8 @@ MealCard.propTypes = {
   area: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  doneData: PropTypes.string,
-  tags: PropTypes.arrayOf(PropTypes.string),
+  doneData: PropTypes.string.isRequired,
+  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 DrinkCard.propTypes = {
@@ -61,6 +62,5 @@ DrinkCard.propTypes = {
   image: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   alcoholicOrNot: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  doneData: PropTypes.string,
+  doneData: PropTypes.string.isRequired,
 };
