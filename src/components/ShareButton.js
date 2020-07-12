@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import shareIcon from '../images/shareIcon.svg';
 
 const copyLinkToClipboard = (pathname) => {
@@ -13,23 +14,27 @@ const copyLinkToClipboard = (pathname) => {
   setTimeout(() => {
     buttonWrapper.removeChild(copyAlert);
     buttonWrapper.appendChild(button);
-  }, 1000);
+  }, 2000);
 };
 
-const ShareButton = () => {
+const ShareButton = ({ testid, path }) => {
   const { pathname } = useLocation();
+  const caminho = pathname.includes('receitas-feitas') ? path : pathname;
   return (
     <div id="share-button-wrapper">
       <button
         id="share-button"
-        data-testid="share-btn"
         type="button"
-        onClick={() => copyLinkToClipboard(pathname)}
+        onClick={() => copyLinkToClipboard(caminho)}
       >
-        <img alt="share-icon" src={shareIcon} />
+        <img alt="share-icon" src={shareIcon} data-testid={testid} />
       </button>
     </div>
   );
 };
+
+ShareButton.propTypes = {
+  testid: PropTypes.string,
+}
 
 export default ShareButton;

@@ -2,9 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function FiltersButtons({ handleClick }) {
-  const handler = (setSelectedCategory, value) =>
-  setSelectedCategory((state) => (value !== state ? value : 'all'));
-
   return (
     <div>
       <button
@@ -17,14 +14,14 @@ function FiltersButtons({ handleClick }) {
       <button
         type="button"
         data-testid="filter-by-food-btn"
-        onClick={() => handler(handleClick, 'comida')}
+        onClick={() => handleClick('comida')}
       >
         Food
       </button>
       <button
         type="button"
         data-testid="filter-by-drink-btn"
-        onClick={() => handler(handleClick, 'bebida')}
+        onClick={() => handleClick('bebida')}
       >
         Drinks
       </button>
