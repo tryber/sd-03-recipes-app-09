@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import ShareButton from "../components/ShareButton";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import ShareButton from '../components/ShareButton';
 
 export const MealCard = ({
   index,
@@ -79,7 +79,7 @@ MealCard.propTypes = {
   area: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  doneData: PropTypes.string.isRequired,
+  doneDate: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
@@ -90,5 +90,5 @@ DrinkCard.propTypes = {
   name: PropTypes.string.isRequired,
   alcoholicOrNot: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  doneData: PropTypes.string.isRequired,
+  doneDate: PropTypes.string.isRequired,
 };

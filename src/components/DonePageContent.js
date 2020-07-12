@@ -3,7 +3,7 @@ import { MealCard, DrinkCard } from '../components/DoneCard';
 
 const GetAllRecipes = (doneRecipes) =>
   doneRecipes.map((recipe, index) =>
-    recipe.type === 'comida' ? (
+    (recipe.type === 'comida' ? (
       <div key={recipe.id}>
         <MealCard
           id={recipe.id}
@@ -13,7 +13,6 @@ const GetAllRecipes = (doneRecipes) =>
           category={recipe.category}
           name={recipe.name}
           doneDate={recipe.doneDate}
-          id={recipe.id}
           tags={recipe.tags}
         />
       </div>
@@ -26,10 +25,9 @@ const GetAllRecipes = (doneRecipes) =>
           alcoholicOrNot={recipe.alcoholicOrNot}
           name={recipe.name}
           doneDate={recipe.doneDate}
-          id={recipe.id}
         />
       </div>
-    )
+    ))
   );
 
 const GetDrinks = (drinkRecipes) =>
@@ -42,7 +40,6 @@ const GetDrinks = (drinkRecipes) =>
         alcoholicOrNot={recipe.alcoholicOrNot}
         name={recipe.name}
         doneDate={recipe.doneDate}
-        id={recipe.id}
       />
     </div>
   ));
@@ -59,7 +56,6 @@ const GetMeals = (mealsRecipes) =>
         name={recipe.name}
         doneDate={recipe.doneDate}
         tags={recipe.tags}
-        id={recipe.id}
       />
     </div>
   ));
