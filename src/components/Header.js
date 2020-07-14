@@ -7,7 +7,7 @@ import searchIcon from '../images/searchIcon.svg';
 import { patterns, forbiddenPlacesForSearchBar } from '../data/Data';
 
 import SearchBar from './SearchBar';
-
+import '../pages/MealsPage.css'
 function Header() {
   const CheckLocation = () => {
     const { pathname } = useLocation();
@@ -25,7 +25,7 @@ function Header() {
 
     if (checkForbidden) {
       return (
-        <div className="header">
+        <div className="box header">
           <Link to="/perfil">
             <img data-testid="profile-top-btn" src={profileIcon} alt="Ícone de perfil" />
           </Link>
@@ -36,12 +36,13 @@ function Header() {
     }
 
     return (
-      <div className="header">
+      <div className=" box header">
         <Link to="/perfil">
           <img data-testid="profile-top-btn" src={profileIcon} alt="Ícone de perfil" />
         </Link>
         <p data-testid="page-title" className="header-title">{title}</p>
         <button
+          className="button search-button"
           type="button"
           onClick={() => setToggleSearchBar(!toggleSearchBar)}
         >
@@ -52,7 +53,7 @@ function Header() {
     );
   };
 
-  return <div>{CheckLocation()}</div>;
+  return <div className="header box">{CheckLocation()}</div>;
 }
 
 export default Header;

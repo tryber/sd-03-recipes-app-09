@@ -1,9 +1,8 @@
-body {
-  width: 360px;
-}
+
 
 .details-img {
-  height: 155px;
+  border-radius: 10px;
+  height: 180px;
   left: 0;
   top: 0;
   width: 360px;
@@ -13,17 +12,15 @@ body {
   display: flex;
   flex-direction: row;
   height: 50px;
+  justify-content: space-between;
 }
 
-.details-name {
-  display: inline;
-  font-size: 30px;
-}
 
 .recommended-carousel {
   display: flex;
   flex-direction: row;
   height: 240px;
+  margin-bottom: 60px;
   overflow: scroll;
 }
 
@@ -31,6 +28,45 @@ body {
   height: 240px;
 }
 
-.recommended-button {
+.details-button {
+  bottom: 0;
   margin-bottom: 0;
+  position: fixed;
+  width: 100%;
+}
+
+.details-button-link {
+  color: white;
+}
+
+.details-title {
+  color: black;
+  font-size: 24px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.category {
+  color: grey;
+  margin-bottom: 24px;
+  margin-top: 0; 
+}
+
+.ingredients-title {
+  font-size: 24px;
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.instructions {
+  margin-bottom: 18px;
+  text-align: justify;
+}
+
+.ingredient-list {
+  margin-bottom: 18px;
+}
+
+.button-wrapper {
+  text-align: left;
 }

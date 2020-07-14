@@ -10,8 +10,9 @@ const handler = (setSelectedCategory, value) =>
 const renderFilterButtons = (categories, setSelectedCategory) => {
   if (categories.length === 0) return null;
   return (
-    <div>
+    <div className="filters-wrapper">
       <button
+        className="button filter-button is-danger is-inverted"
         onClick={(e) => handler(setSelectedCategory, e.target.value)}
         type="button"
         data-testid={'All-category-filter'}
@@ -22,6 +23,7 @@ const renderFilterButtons = (categories, setSelectedCategory) => {
       {categories.map(({ strCategory }, i) =>
         (i > 4 ? null : (
           <button
+            className="button filter-button is-danger is-inverted"
             key={strCategory}
             data-testid={`${strCategory}-category-filter`}
             type="button"

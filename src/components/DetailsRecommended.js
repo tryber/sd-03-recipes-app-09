@@ -26,7 +26,7 @@ const DetailsRecommended = () => {
   if (recommended) {
     return (
       <div>
-        <h2>Recomendados</h2>
+        <h2 className="details-title">Recomendados</h2>
         <div className="recommended-carousel">
           {recommended.map((recipe, index) => (
             <RecommendationCard

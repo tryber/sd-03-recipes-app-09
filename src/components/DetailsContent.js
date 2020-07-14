@@ -12,21 +12,23 @@ const renderDetailsHeader = (data) => (
       alt={data.name}
       src={data.image}
     />
-    <div id="title-wrapper">
-      <p data-testid="recipe-title" className="details-name">{data.name}</p>
-      {ShareButton()}
-      {FavoriteButton(data)}
+    <div id="title-wrapper" className="details-name-wrapper">
+      <p data-testid="recipe-title" className="title">{data.name}</p>
+      <div>
+        {ShareButton()}
+        {FavoriteButton(data)}
+      </div>
     </div>
     <div>
-      <h4 data-testid="recipe-category">{data.category}</h4>
+      <h4 className="details-title category" data-testid="recipe-category">{data.category}</h4>
     </div>
   </div>
 );
 
 const renderIngredients = (ingredients) => (
   <div>
-    <h3>Ingredients</h3>
-    <ul>
+    <h3 className="details-title ingredients-title">Ingredients</h3>
+    <ul className="ingredient-list">
       {ingredients.map((ingredient, i) => (
         <li
           data-testid={`${i}-ingredient-name-and-measure`}
@@ -41,8 +43,8 @@ const renderIngredients = (ingredients) => (
 
 const renderInstructions = (instructions) => (
   <div>
-    <h3>Instructions</h3>
-    <p data-testid="instructions">{instructions}</p>
+    <h3 className="details-title">Instructions</h3>
+    <p className="instructions" data-testid="instructions">{instructions}</p>
   </div>
 );
 
