@@ -14,6 +14,7 @@ import ExploreDrinkIngredientPage from './pages/ExploreDrinkIngredientPage';
 import NotFoundPage from './pages/NotFoundPage';
 import DonePage from './pages/DonePage';
 import FavoritesPage from './pages/FavoritesPage';
+import ProgressPage from './pages/ProgressPage';
 
 function App() {
   return (
@@ -23,8 +24,8 @@ function App() {
         <Route path="/explorar/bebidas/area" component={NotFoundPage} />
         <Route path="/explorar/comidas/ingredientes" component={ExploreMealIngredientPage} />
         <Route path="/explorar/bebidas/ingredientes" component={ExploreDrinkIngredientPage} />
-        <Route path="/comidas/:id/in-progress" component="" />
-        <Route path="/bebidas/:id/in-progress" component="" />
+        <Route path="/comidas/:id/in-progress" component={ProgressPage} />
+        <Route path="/bebidas/:id/in-progress" component={ProgressPage} />
         <Route path="/comidas/:id" component={DetailsPage} />
         <Route path="/bebidas/:id" component={DetailsPage} />
         <Route path="/explorar/comidas" component={ExplorePageByForD} />
