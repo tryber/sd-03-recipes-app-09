@@ -1,34 +1,42 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
+import { fetchDrinkById } from '../services/ServiceDrinks';
+import { fetchMealById } from '../services/ServiceMeals';
+import { sortMealData, sortDrinkData } from '../data/helpers/sortData';
 
 const isFavorite = (id) => {
   const favorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
   return favorites ? favorites.some((recipe) => recipe.id === id) : false;
 };
 
-const createFavoriteObject = (data) => {
+const createFavoriteObject = (data, pathname) => {
+  console.log('data antes de filtrar:', data);
+  const sortedData = pathname.includes('/comidas') ? sortMealData(data[0]) : sortDrinkData(data[0]);
+  console.log('data depois de filtrar:', sortedData);
   const favorite = {
-    id: data.id,
-    type: data.type,
-    area: data.area,
-    category: data.type === 'bebida' ? data.drinkType : data.category,
-    alcoholicOrNot: data.alcoholicOrNot,
-    name: data.name,
-    image: data.image,
+    id: sortedData.id,
+    type: sortedData.type,
+    area: sortedData.area,
+    category: sortedData.type === 'bebida' ? sortedData.drinkType : sortedData.category,
+    alcoholicOrNot: sortedData.alcoholicOrNot,
+    name: sortedData.name,
+    image: sortedData.image,
   };
   return favorite;
 };
 
-const saveFavorite = (data, setIsFavorite) => {
+const saveFavorite = async (id, pathname, setIsFavorite) => {
   const favorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
-  const favoriteObject = createFavoriteObject(data);
+  const data = pathname.includes('/comidas') ? await fetchMealById(id) : await fetchDrinkById(id);
+  const favoriteObject = createFavoriteObject(pathname.includes('/comidas') ? data.meals : data.drinks, pathname);
   if (favorites) {
     favorites.push(favoriteObject);
     localStorage.setItem('favoriteRecipes', JSON.stringify(favorites));
     setIsFavorite(true);
-  }
-  if (!favorites) {
+  } else {
     localStorage.setItem('favoriteRecipes', JSON.stringify([favoriteObject]));
     setIsFavorite(true);
   }
@@ -45,14 +53,16 @@ const removeFavorite = (id, setIsFavorite) => {
   return setIsFavorite(false);
 };
 
-const FavoriteButton = (data) => {
-  const [favorite, setFavorite] = useState(isFavorite(data.id));
+const FavoriteButton = (props) => {
+  const { id } = props;
+  const [favorite, setFavorite] = useState(isFavorite(id));
+  const { pathname } = useLocation();
   return (
     <button
       type="button"
       onClick={favorite
-        ? () => removeFavorite(data.id, setFavorite)
-        : () => saveFavorite(data, setFavorite)}
+        ? () => removeFavorite(id, setFavorite)
+        : () => saveFavorite(id, pathname, setFavorite)}
     >
       {favorite
         ? (
@@ -73,6 +83,10 @@ const FavoriteButton = (data) => {
         )}
     </button>
   );
+};
+
+FavoriteButton.propTypes = {
+  id: PropTypes.string.isRequired,
 };
 
 export default FavoriteButton;
