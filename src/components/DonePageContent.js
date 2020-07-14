@@ -67,9 +67,9 @@ const DonePageCotent = ({ category }) => {
   if (category === 'all' && doneRecipes) {
     return GetAllRecipes(doneRecipes);
   } else if (category === 'bebida' && doneRecipes) {
-    return GetDrinks(drinkRecipes);
+    return GetDrinks(doneRecipes);
   } else if (category === 'comida' && doneRecipes) {
-    return GetMeals(mealsRecipes);
+    return GetMeals(doneRecipes);
   }
   return <p>Nenhuma receita favorita...</p>;
 };
