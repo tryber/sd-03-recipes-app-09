@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import Header from '../components/Header';
 import FiltersButtons from '../components/FiltersButtons';
 import DonePageContent from '../components/DonePageContent';
 
@@ -8,6 +9,7 @@ function DonePage() {
 
   return (
     <div>
+      <Header />
       <FiltersButtons handleClick={setCategory} />
       <DonePageContent category={category} />
     </div>

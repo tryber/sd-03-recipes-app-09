@@ -1,8 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import ReactPlayer from 'react-player/youtube';
-import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import RecipesContext from '../contexts/RecipesContext';
 import ShareButton from './ShareButton';
 import FavoriteButton from './FavoriteButton';
 
