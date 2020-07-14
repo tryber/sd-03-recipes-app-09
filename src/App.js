@@ -11,6 +11,8 @@ import ExplorePageByArea from './pages/ExplorePageByArea';
 import DetailsPage from './pages/DetailsPage';
 import ExploreMealIngredientPage from './pages/ExploreMealIngredientPage';
 import ExploreDrinkIngredientPage from './pages/ExploreDrinkIngredientPage';
+import NotFoundPage from './pages/NotFoundPage';
+import DonePage from './pages/DonePage';
 import FavoritesPage from './pages/FavoritesPage';
 
 function App() {
@@ -18,6 +20,7 @@ function App() {
     <center>
       <Switch>
         <Route path="/explorar/comidas/area" component={ExplorePageByArea} />
+        <Route path="/explorar/bebidas/area" component={NotFoundPage} />
         <Route path="/explorar/comidas/ingredientes" component={ExploreMealIngredientPage} />
         <Route path="/explorar/bebidas/ingredientes" component={ExploreDrinkIngredientPage} />
         <Route path="/comidas/:id/in-progress" component="" />
@@ -26,13 +29,14 @@ function App() {
         <Route path="/bebidas/:id" component={DetailsPage} />
         <Route path="/explorar/comidas" component={ExplorePageByForD} />
         <Route path="/explorar/bebidas" component={ExplorePageByForD} />
-        <Route path="/receitas-feitas" component="" />
+        <Route path="/receitas-feitas" component={DonePage} />
         <Route path="/receitas-favoritas" component={FavoritesPage} />
         <Route path="/comidas" component={MealsPage} />
         <Route path="/bebidas" component={DrinksPage} />
         <Route path="/explorar" component={ExplorePage} />
         <Route path="/perfil" component={ProfilePage} />
         <Route exact path="/" component={LoginPage} />
+        <Route component={NotFoundPage} />
       </Switch>
     </center>
   );

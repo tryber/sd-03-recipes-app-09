@@ -10,7 +10,7 @@ import ShareButton from '../components/ShareButton';
 
 import './FavoritesPage.css';
 
-export default function FavoritesPage() {
+function FavoritesPage() {
   const [updateUnfavorite, setUpdateUnfavorite] = useState(false);
   const [filterRecipes, setFilterRecipes] = useState('All');
   const [favorites, setFavorites] = useState([]);
@@ -74,3 +74,5 @@ export default function FavoritesPage() {
     </div>
   );
 }
+
+export default FavoritesPage;

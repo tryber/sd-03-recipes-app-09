@@ -9,12 +9,13 @@ export default function AreaOptions(props) {
 
   const getAllAreas = async () => {
     const { meals } = await listAllAreas();
-    setAreas([...meals]);
+    setAreas(meals);
   };
 
   useEffect(() => {
     getAllAreas();
   }, []);
+
   return (
     <select
       onChange={(e) => handleChange(e.target.value)}
@@ -25,12 +26,12 @@ export default function AreaOptions(props) {
       </option>
       {areas && areas.length > 1 ? (
         areas.map(({ strArea }) => (
-          <option key={strArea} value={strArea}>
+          <option key={strArea} value={strArea} data-testid={`${strArea}-option`} >
             {strArea}
           </option>
         ))
       ) : (
-        <p>Carregando...</p>
+        <option>Carregando...</option>
       )}
     </select>
   );
