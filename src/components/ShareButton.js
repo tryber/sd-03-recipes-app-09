@@ -38,7 +38,7 @@ ShareButton.propTypes = {
   path: PropTypes.string,
 };
 
-ShareButton.defaultProp = {
+ShareButton.defaultProps = {
   path: '/',
 };
 

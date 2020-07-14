@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types;'
+import PropTypes from 'prop-types';
 import { MealCard, DrinkCard } from '../components/DoneCard';
 
 const GetAllRecipes = (doneRecipes) =>
@@ -83,6 +83,6 @@ const DonePageCotent = ({ category }) => {
 
 DonePageCotent.propTypes = {
   category: PropTypes.string.isRequired,
-}
+};
 
 export default DonePageCotent;
