@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types;'
 import { MealCard, DrinkCard } from '../components/DoneCard';
 
 const GetAllRecipes = (doneRecipes) =>
@@ -27,7 +28,7 @@ const GetAllRecipes = (doneRecipes) =>
           doneDate={recipe.doneDate}
         />
       </div>
-    ))
+    )),
   );
 
 const GetDrinks = (drinkRecipes) =>
@@ -61,7 +62,6 @@ const GetMeals = (mealsRecipes) =>
   ));
 
 const DonePageCotent = ({ category }) => {
-  console.log(category);
   const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
   console.log(doneRecipes);
   const drinkRecipes = doneRecipes
@@ -76,9 +76,13 @@ const DonePageCotent = ({ category }) => {
   } else if (category === 'bebida' && drinkRecipes) {
     return GetDrinks(drinkRecipes);
   } else if (category === 'comida' && mealsRecipes) {
-    return GetMeals(mealsRecipes && mealsRecipes);
+    return GetMeals(mealsRecipes);
   }
   return <p>Nenhuma receita favorita...</p>;
 };
+
+DonePageCotent.propTypes = {
+  category: PropTypes.string.isRequired,
+}
 
 export default DonePageCotent;
