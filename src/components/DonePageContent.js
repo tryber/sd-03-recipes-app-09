@@ -32,7 +32,7 @@ const GetAllRecipes = (doneRecipes) =>
   );
 
 const GetDrinks = (drinkRecipes) =>
-  drinkRecipes.map((recipe, index) => (
+  drinkRecipes.filter(({ type }) => type === 'bebida').map((recipe, index) => (
     <div key={recipe.id}>
       <DrinkCard
         id={recipe.id}
@@ -46,7 +46,7 @@ const GetDrinks = (drinkRecipes) =>
   ));
 
 const GetMeals = (mealsRecipes) =>
-  mealsRecipes.map((recipe, index) => (
+  mealsRecipes.filter(({ type }) => type === 'comida').map((recipe, index) => (
     <div key={recipe.id}>
       <MealCard
         id={recipe.id}
@@ -63,19 +63,12 @@ const GetMeals = (mealsRecipes) =>
 
 const DonePageCotent = ({ category }) => {
   const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
-  console.log(doneRecipes);
-  const drinkRecipes = doneRecipes
-    ? doneRecipes.filter(({ type }) => type === 'bebida')
-    : [];
-  const mealsRecipes = doneRecipes
-    ? doneRecipes.filter(({ type }) => type === 'comida')
-    : [];
 
   if (category === 'all' && doneRecipes) {
     return GetAllRecipes(doneRecipes);
-  } else if (category === 'bebida' && drinkRecipes) {
+  } else if (category === 'bebida' && doneRecipes) {
     return GetDrinks(drinkRecipes);
-  } else if (category === 'comida' && mealsRecipes) {
+  } else if (category === 'comida' && doneRecipes) {
     return GetMeals(mealsRecipes);
   }
   return <p>Nenhuma receita favorita...</p>;
