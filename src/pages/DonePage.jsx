@@ -5,7 +5,7 @@ import DonePageContent from '../components/DonePageContent';
 
 function DonePage() {
   const [category, setCategory] = useState('all');
-  
+
   return (
     <div>
       <FiltersButtons handleClick={setCategory} />

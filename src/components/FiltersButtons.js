@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 function FiltersButtons({ handleClick }) {
   return (
@@ -7,7 +7,7 @@ function FiltersButtons({ handleClick }) {
       <button
         type="button"
         data-testid="filter-by-all-btn"
-        onClick={() => handleClick("all")}
+        onClick={() => handleClick('all')}
       >
         All
       </button>
