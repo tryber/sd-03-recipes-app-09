@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import ReactPlayer from 'react-player/youtube';
 import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import RecipesContext from '../contexts/RecipesContext';
 import ShareButton from './ShareButton';
 import FavoriteButton from './FavoriteButton';
@@ -24,21 +25,26 @@ const renderDetailsHeader = (data) => (
   </div>
 );
 
-const renderIngredients = (ingredients) => (
-  <div>
-    <h3>Ingredients</h3>
-    <ul>
-      {ingredients.map((ingredient, i) => (
-        <li
-          data-testid={`${i}-ingredient-name-and-measure`}
-          key={ingredient}
-        >
-          {ingredient}
-        </li>
-      ))}
-    </ul>
-  </div>
-);
+const renderIngredients = (ingredients) => {
+  if (ingredients) {
+    return (
+      <div>
+        <h3>Ingredients</h3>
+        <ul>
+          {ingredients.map((ingredient, i) => (
+            <li
+              data-testid={`${i}-ingredient-name-and-measure`}
+              key={ingredient}
+            >
+              {ingredient}
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+  return <div />;
+};
 
 const renderInstructions = (instructions) => (
   <div>
@@ -66,19 +72,33 @@ const renderVideo = (video, name) => {
   return null;
 };
 
-const DetailsContent = () => {
-  const { mealsData, drinksData } = useContext(RecipesContext);
-  const { pathname } = useLocation();
-  const data = pathname.includes('/comidas') ? mealsData : drinksData;
+const DetailsContent = ({ data }) => {
+  if (data) {
+    return (
+      <div>
+        {renderDetailsHeader(data)}
+        {renderIngredients(data.ingredients)}
+        {renderInstructions(data.instructions)}
+        {renderVideo(data.video)}
+      </div>
+    );
+  }
+  return <div />;
+};
 
-  return (
-    <div>
-      {renderDetailsHeader(data)}
-      {renderIngredients(data.ingredients)}
-      {renderInstructions(data.instructions)}
-      {renderVideo(data.video)}
-    </div>
-  );
+DetailsContent.propTypes = {
+  data: PropTypes.shape({
+    alcoholicOrNot: PropTypes.string,
+    area: PropTypes.string,
+    category: PropTypes.string,
+    id: PropTypes.string,
+    image: PropTypes.string,
+    ingredients: PropTypes.arrayOf(PropTypes.string),
+    instructions: PropTypes.string,
+    name: PropTypes.string,
+    type: PropTypes.string,
+    video: PropTypes.string,
+  }).isRequired,
 };
 
 export default DetailsContent;
