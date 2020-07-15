@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import ProgressContent from '../components/ProgressContent';
+import RecipeHeader from '../components/RecipeHeader';
+import RecipeInstructions from '../components/RecipeInstructions';
 import ProgressIngredients from '../components/ProgressIngredients';
 import { fetchMealById } from '../services/ServiceMeals';
 import { fetchDrinkById } from '../services/ServiceDrinks';
@@ -32,8 +33,9 @@ function ProgressPage(props) {
   if (data) {
     return (
       <div>
-        <ProgressContent data={data} />
+        <RecipeHeader name={data.name} image={data.image} category={data.category} id={data.id} />
         <ProgressIngredients ingredients={data.ingredients} />
+        <RecipeInstructions instructions={data.instructions} />
       </div>
     );
   }

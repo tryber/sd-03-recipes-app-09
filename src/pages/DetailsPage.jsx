@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import DetailsContent from '../components/DetailsContent';
+import RecipeHeader from '../components/RecipeHeader';
+import RecipeIngredientList from '../components/RecipeIngredientList';
+import RecipeInstructions from '../components/RecipeInstructions';
+import RecipeVideo from '../components/RecipeVideo';
 import DetailsRecommended from '../components/DetailsRecommended';
 import DetailsButton from '../components/DetailsButton';
 import { fetchMealById } from '../services/ServiceMeals';
@@ -30,10 +33,13 @@ function DetailsPage(props) {
     }
   }, []);
 
-  if (data) {
+  if (data.id !== undefined) {
     return (
       <div>
-        <DetailsContent data={data} />
+        <RecipeHeader name={data.name} image={data.image} category={data.category} id={data.id} />
+        <RecipeIngredientList ingredients={data.ingredients} />
+        <RecipeInstructions instructions={data.instructions} />
+        <RecipeVideo video={data.video} />
         <DetailsRecommended />
         <DetailsButton id={data.id} />
       </div>
