@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import RecipeHeader from '../components/RecipeHeader';
 import RecipeInstructions from '../components/RecipeInstructions';
 import ProgressIngredients from '../components/ProgressIngredients';
+import FinishRecipeButton from '../components/FinishRecipeButton';
 import { fetchMealById } from '../services/ServiceMeals';
 import { fetchDrinkById } from '../services/ServiceDrinks';
 import { sortDrinkData, sortMealData } from '../data/helpers/sortData';
@@ -36,6 +37,7 @@ function ProgressPage(props) {
         <RecipeHeader name={data.name} image={data.image} category={data.category} id={data.id} />
         <ProgressIngredients ingredients={data.ingredients} />
         <RecipeInstructions instructions={data.instructions} />
+        <FinishRecipeButton />
       </div>
     );
   }
