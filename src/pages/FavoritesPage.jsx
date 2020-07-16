@@ -11,47 +11,58 @@ import ShareButton from '../components/ShareButton';
 import './FavoritesPage.css';
 
 const createCards = (params, setUpdateUnfavorite) =>
-  params.map(({ id, type, area, category, alcoholicOrNot, name, image }, index) => {
-    const path = type === 'comida' ? `/comidas/${id}` : `/bebidas/${id}`;
-    return (
-      <div key={id} className="main-favorite-cards">
-        <div>
-          <Link to={path}>
-            <img src={image} alt={name} className="img" />
-          </Link>
+  params.map(
+    ({ id, type, area, category, alcoholicOrNot, name, image }, index) => {
+      const path = type === 'comida' ? `/comidas/${id}` : `/bebidas/${id}`;
+      return (
+        <div key={id} className="main-favorite-cards">
+          <div>
+            <Link to={path}>
+              <img
+                src={image}
+                alt={name}
+                className="img"
+                data-testid={`${index}-horizontal-image`}
+              />
+            </Link>
+          </div>
+          <div>
+            {type === 'comida' ? (
+              <p data-testid={`${index}-horizontal-top-text`}>
+                {area} - {category}
+              </p>
+            ) : (
+              <p data-testid={`${index}-horizontal-top-text`}>
+                {alcoholicOrNot}
+              </p>
+            )}
+            <Link to={path}>
+              <p data-testid={`${index}-horizontal-name`}>{name}</p>
+            </Link>
+          </div>
+          <div>
+            <ShareButton testid={`${index}-horizontal-share-btn`} path={path} />
+            <FavoriteButton
+              id={id}
+              handleFatherElement={setUpdateUnfavorite}
+              testid={`${index}-horizontal-favorite-btn`}
+            />
+          </div>
         </div>
-        <div>
-          {type === 'comida' ? (
-            <p>
-              {area}-{category}
-            </p>
-          ) : (
-            <p>{alcoholicOrNot}</p>
-          )}
-          <Link to={path}>
-            <p>{name}</p>
-          </Link>
-        </div>
-        <div>
-          <ShareButton />
-          <FavoriteButton id={id} handleFatherElement={setUpdateUnfavorite} testid={`${index}-horizontal-favorite-btn`} />
-        </div>
-      </div>
-    );
-  });
+      );
+    }
+  );
 
 const mountFavoriteList = (filter, favorites, setUpdateUnfavorite) => {
   let mountParams = [];
-  if (filter === 'comida') {
+  if (favorites.length === 0) return <p>Sem receitas favoritas...</p>;
+  else if (filter === 'comida') {
     mountParams = favorites.filter((favorite) => favorite.type === 'comida');
     return createCards(mountParams, setUpdateUnfavorite);
-  }
-
-  if (filter === 'bebida') {
+  } else if (filter === 'bebida') {
     mountParams = favorites.filter((favorite) => favorite.type === 'bebida');
     return createCards(mountParams, setUpdateUnfavorite);
   }
-
   mountParams = favorites;
   return createCards(mountParams, setUpdateUnfavorite);
 };
@@ -62,7 +73,8 @@ function FavoritesPage() {
   const [favorites, setFavorites] = useState([]);
 
   const getFavoritesAndSet = () => {
-    const favoriteList = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    const favoriteList =
+      JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
     setFavorites([...favoriteList]);
     setUpdateUnfavorite(false);
   };
