@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const finishRecipeButton = () => {
   console.log('mounting button');
   return (
     <button type="button" data-testid="finish-recipe-btn">
-      finalizar Receita
+      <Link to="/receitas-feitas">finalizar Receita</Link>
     </button>
   );
 };

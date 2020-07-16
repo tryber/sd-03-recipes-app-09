@@ -19,7 +19,7 @@ const RecipeHeader = ({ data }) => {
         <p data-testid="recipe-title" className="details-name">
           {name}
         </p>
-        <ShareButton />
+        <ShareButton id={id} />
         {id ? <FavoriteButton id={id} /> : null}
       </div>
       <div>
