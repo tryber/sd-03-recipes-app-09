@@ -10,22 +10,6 @@ import ShareButton from '../components/ShareButton';
 
 import './FavoritesPage.css';
 
-const mountFavoriteList = (filter, favorites, setUpdateUnfavorite) => {
-  let mountParams = [];
-  if (filter === 'comida') {
-    mountParams = favorites.filter((favorite) => favorite.type === 'comida');
-    return createCards(mountParams, setUpdateUnfavorite);
-  }
-
-  if (filter === 'bebida') {
-    mountParams = favorites.filter((favorite) => favorite.type === 'bebida');
-    return createCards(mountParams, setUpdateUnfavorite);
-  }
-
-  mountParams = favorites;
-  return createCards(mountParams, setUpdateUnfavorite);
-};
-
 const createCards = (params, setUpdateUnfavorite) =>
   params.map(({ id, type, area, category, alcoholicOrNot, name, image }, index) => {
     const path = type === 'comida' ? `/comidas/${id}` : `/bebidas/${id}`;
@@ -55,6 +39,22 @@ const createCards = (params, setUpdateUnfavorite) =>
       </div>
     );
   });
+
+const mountFavoriteList = (filter, favorites, setUpdateUnfavorite) => {
+  let mountParams = [];
+  if (filter === 'comida') {
+    mountParams = favorites.filter((favorite) => favorite.type === 'comida');
+    return createCards(mountParams, setUpdateUnfavorite);
+  }
+
+  if (filter === 'bebida') {
+    mountParams = favorites.filter((favorite) => favorite.type === 'bebida');
+    return createCards(mountParams, setUpdateUnfavorite);
+  }
+
+  mountParams = favorites;
+  return createCards(mountParams, setUpdateUnfavorite);
+};
 
 function FavoritesPage() {
   const [updateUnfavorite, setUpdateUnfavorite] = useState(false);
