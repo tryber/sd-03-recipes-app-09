@@ -40,30 +40,31 @@ const saveFavorite = async (id, pathname, setIsFavorite) => {
   }
 };
 
-const removeFavorite = (id, setIsFavorite) => {
+const removeFavorite = (id, setIsFavorite, handler) => {
   const favorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
   if (favorites) {
     const filteredFavorites = favorites.filter((recipe) => recipe.id !== id);
     localStorage.setItem('favoriteRecipes', JSON.stringify(filteredFavorites));
     setIsFavorite(false);
   }
+  if (handler) handler(true);
   return setIsFavorite(false);
 };
 
-const FavoriteButton = ({ id }) => {
+const FavoriteButton = ({ id, handleFatherElement, testid }) => {
   const [favorite, setFavorite] = useState(isFavorite(id));
   const { pathname } = useLocation();
   return (
     <button
       type="button"
       onClick={favorite
-        ? () => removeFavorite(id, setFavorite)
+        ? () => removeFavorite(id, setFavorite, handleFatherElement)
         : () => saveFavorite(id, pathname, setFavorite)}
     >
       {favorite
         ? (
           <img
-            data-testid="favorite-btn"
+            data-testid={testid || 'favorite-btn'}
             src={blackHeartIcon}
             alt="filled-heart-icon"
             style={{ width: '26px' }}
@@ -83,6 +84,8 @@ const FavoriteButton = ({ id }) => {
 
 FavoriteButton.propTypes = {
   id: PropTypes.string.isRequired,
+  handleFatherElement: PropTypes.func.isRequired,
+  testid: PropTypes.string.isRequired,
 };
 
 export default FavoriteButton;

@@ -19,7 +19,7 @@ const copyLinkToClipboard = (pathname) => {
 
 const ShareButton = ({ testid, path }) => {
   const { pathname } = useLocation();
-  const caminho = pathname.includes('receitas-feitas') ? path : pathname;
+  const caminho = pathname.includes('receitas') ? path : pathname;
   return (
     <div id="share-button-wrapper">
       <button
