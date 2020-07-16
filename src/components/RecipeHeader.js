@@ -3,34 +3,39 @@ import PropTypes from 'prop-types';
 import FavoriteButton from './FavoriteButton';
 import ShareButton from './ShareButton';
 
-const RecipeHeader = ({
-  name, image, category, id,
-}) => (
-  <div>
-    <img
-      data-testid="recipe-photo"
-      className="details-img"
-      alt={name}
-      src={image}
-    />
-    <div id="title-wrapper">
-      <p data-testid="recipe-title" className="details-name">
-        {name}
-      </p>
-      <ShareButton />
-      { id ? <FavoriteButton id={id} /> : null}
-    </div>
+const RecipeHeader = ({ data }) => {
+  const {
+    name, image, category, id,
+  } = data;
+  return (
     <div>
-      <h4 data-testid="recipe-category">{category}</h4>
+      <img
+        data-testid="recipe-photo"
+        className="details-img"
+        alt={name}
+        src={image}
+      />
+      <div id="title-wrapper">
+        <p data-testid="recipe-title" className="details-name">
+          {name}
+        </p>
+        <ShareButton />
+        {id ? <FavoriteButton id={id} /> : null}
+      </div>
+      <div>
+        <h4 data-testid="recipe-category">{category}</h4>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 RecipeHeader.propTypes = {
-  name: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
+  data: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default RecipeHeader;
