@@ -51,7 +51,7 @@ const removeFavorite = (id, setIsFavorite, handler) => {
   return setIsFavorite(false);
 };
 
-const FavoriteButton = ({ id, handleFatherElement }) => {
+const FavoriteButton = ({ id, handleFatherElement, testid }) => {
   const [favorite, setFavorite] = useState(isFavorite(id));
   const { pathname } = useLocation();
   return (
@@ -64,7 +64,7 @@ const FavoriteButton = ({ id, handleFatherElement }) => {
       {favorite
         ? (
           <img
-            data-testid="favorite-btn"
+            data-testid={testid ? testid : "favorite-btn"}
             src={blackHeartIcon}
             alt="filled-heart-icon"
             style={{ width: '26px' }}
@@ -85,6 +85,7 @@ const FavoriteButton = ({ id, handleFatherElement }) => {
 FavoriteButton.propTypes = {
   id: PropTypes.string.isRequired,
   handleFatherElement: PropTypes.func.isRequired,
+  testid: PropTypes.string.isRequired,
 };
 
 export default FavoriteButton;
