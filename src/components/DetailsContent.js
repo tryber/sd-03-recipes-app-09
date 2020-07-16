@@ -13,9 +13,11 @@ const renderDetailsHeader = (data) => (
       src={data.image}
     />
     <div id="title-wrapper">
-      <p data-testid="recipe-title" className="details-name">{data.name}</p>
+      <p data-testid="recipe-title" className="details-name">
+        {data.name}
+      </p>
       <ShareButton testid="share-btn" />
-      <FavoriteButton id={data.id} />
+      {data.id ? <FavoriteButton id={data.id} /> : null}
     </div>
     <div>
       <h4 data-testid="recipe-category">{data.category}</h4>
