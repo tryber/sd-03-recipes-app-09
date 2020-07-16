@@ -50,7 +50,7 @@ const createCards = (params, setUpdateUnfavorite) =>
           </div>
         </div>
       );
-    }
+    },
   );
 
 const mountFavoriteList = (filter, favorites, setUpdateUnfavorite) => {
