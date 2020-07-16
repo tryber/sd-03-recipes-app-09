@@ -3,29 +3,28 @@ import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import shareIcon from '../images/shareIcon.svg';
 
-const copyLinkToClipboard = (pathname) => {
-  navigator.clipboard.writeText(`http://localhost:3000${pathname}`);
-  const button = document.getElementById('share-button');
+const copyLinkToClipboard = (pathname, id) => {
+  const url = pathname.includes('/comidas') ? '/comidas' : '/bebidas';
+  navigator.clipboard.writeText(`http://localhost:3000${url}/${id}`);
   const buttonWrapper = document.getElementById('share-button-wrapper');
   const copyAlert = document.createElement('span');
   copyAlert.innerHTML = 'Link copiado!';
-  buttonWrapper.removeChild(button);
   buttonWrapper.appendChild(copyAlert);
   setTimeout(() => {
     buttonWrapper.removeChild(copyAlert);
-    buttonWrapper.appendChild(button);
   }, 1000);
 };
 
-const ShareButton = ({ testid, path }) => {
+const ShareButton = ({ testid, path, id }) => {
   const { pathname } = useLocation();
   const caminho = pathname.includes('receitas') ? path : pathname;
   return (
     <div id="share-button-wrapper">
       <button
-        id="share-button"
+        id="share-btn"
+        data-testid={testid || 'share-btn'}
         type="button"
-        onClick={() => copyLinkToClipboard(caminho)}
+        onClick={() => copyLinkToClipboard(caminho, id)}
       >
         <img alt="share-icon" src={shareIcon} data-testid={testid} />
       </button>
@@ -36,6 +35,7 @@ const ShareButton = ({ testid, path }) => {
 ShareButton.propTypes = {
   testid: PropTypes.string.isRequired,
   path: PropTypes.string,
+  id: PropTypes.string.isRequired,
 };
 
 ShareButton.defaultProps = {
