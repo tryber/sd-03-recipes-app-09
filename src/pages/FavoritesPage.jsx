@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import FiltersButtons from "../components/FiltersButtons";
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import FiltersButtons from '../components/FiltersButtons';
 
-import FavoriteButton from "../components/FavoriteButton";
-import ShareButton from "../components/ShareButton";
+import FavoriteButton from '../components/FavoriteButton';
+import ShareButton from '../components/ShareButton';
 
-import "./FavoritesPage.css";
+import './FavoritesPage.css';
 
 const mountFavoriteList = (filter, favorites, setUpdateUnfavorite) => {
   let mountParams = [];
-  if (filter === "comida") {
-    mountParams = favorites.filter((favorite) => favorite.type === "comida");
+  if (filter === 'comida') {
+    mountParams = favorites.filter((favorite) => favorite.type === 'comida');
     return createCards(mountParams, setUpdateUnfavorite);
   }
 
-  if (filter === "bebida") {
-    mountParams = favorites.filter((favorite) => favorite.type === "bebida");
+  if (filter === 'bebida') {
+    mountParams = favorites.filter((favorite) => favorite.type === 'bebida');
     return createCards(mountParams, setUpdateUnfavorite);
   }
 
@@ -28,7 +28,7 @@ const mountFavoriteList = (filter, favorites, setUpdateUnfavorite) => {
 
 const createCards = (params, setUpdateUnfavorite) =>
   params.map(({ id, type, area, category, alcoholicOrNot, name, image }, index) => {
-    const path = type === "comida" ? `/comidas/${id}` : `/bebidas/${id}`;
+    const path = type === 'comida' ? `/comidas/${id}` : `/bebidas/${id}`;
     return (
       <div key={id} className="main-favorite-cards">
         <div>
@@ -37,7 +37,7 @@ const createCards = (params, setUpdateUnfavorite) =>
           </Link>
         </div>
         <div>
-          {type === "comida" ? (
+          {type === 'comida' ? (
             <p>
               {area}-{category}
             </p>
@@ -58,11 +58,11 @@ const createCards = (params, setUpdateUnfavorite) =>
 
 function FavoritesPage() {
   const [updateUnfavorite, setUpdateUnfavorite] = useState(false);
-  const [filterRecipes, setFilterRecipes] = useState("all");
+  const [filterRecipes, setFilterRecipes] = useState('all');
   const [favorites, setFavorites] = useState([]);
 
   const getFavoritesAndSet = () => {
-    const favoriteList = JSON.parse(localStorage.getItem("favoriteRecipes"));
+    const favoriteList = JSON.parse(localStorage.getItem('favoriteRecipes'));
     setFavorites([...favoriteList]);
     setUpdateUnfavorite(false);
   };

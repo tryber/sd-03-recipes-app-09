@@ -64,7 +64,7 @@ const FavoriteButton = ({ id, handleFatherElement, testid }) => {
       {favorite
         ? (
           <img
-            data-testid={testid ? testid : "favorite-btn"}
+            data-testid={testid || 'favorite-btn'}
             src={blackHeartIcon}
             alt="filled-heart-icon"
             style={{ width: '26px' }}
