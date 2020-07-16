@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactPlayer from 'react-player/youtube';
 import PropTypes from 'prop-types';
 import ShareButton from './ShareButton';
 import FavoriteButton from './FavoriteButton';
@@ -53,15 +54,17 @@ const renderInstructions = (instructions) => (
 );
 
 const renderVideo = (video, name) => {
+  console.log(video);
   if (video) {
     return (
       <div>
         <h3>Video</h3>
-        <iframe
+        <ReactPlayer
           data-testid="video"
           title={`${name} recipe`}
           width="360"
-          src={video}
+          height="250"
+          url={video}
         />
       </div>
     );

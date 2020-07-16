@@ -6,7 +6,7 @@ import MealsPage from './pages/MealsPage';
 import DrinksPage from './pages/DrinksPage';
 import ProfilePage from './pages/ProfilePage';
 import ExplorePage from './pages/ExplorePage';
-import ExplorePageByForD from './pages/ExplorePageByForD';
+import ExploreMainPage from './pages/ExploreMainPage';
 import ExplorePageByArea from './pages/ExplorePageByArea';
 import DetailsPage from './pages/DetailsPage';
 import ExploreMealIngredientPage from './pages/ExploreMealIngredientPage';
@@ -27,8 +27,8 @@ function App() {
         <Route path="/bebidas/:id/in-progress" component="" />
         <Route path="/comidas/:id" component={DetailsPage} />
         <Route path="/bebidas/:id" component={DetailsPage} />
-        <Route path="/explorar/comidas" component={ExplorePageByForD} />
-        <Route path="/explorar/bebidas" component={ExplorePageByForD} />
+        <Route path="/explorar/comidas" component={ExploreMainPage} />
+        <Route path="/explorar/bebidas" component={ExploreMainPage} />
         <Route path="/receitas-feitas" component={DonePage} />
         <Route path="/receitas-favoritas" component={FavoritesPage} />
         <Route path="/comidas" component={MealsPage} />

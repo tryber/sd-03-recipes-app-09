@@ -1,8 +1,7 @@
 .details-img {
-  height: 155px;
   left: 0;
   top: 0;
-  width: 360px;
+  width: 250px;
 }
 
 .details-name-wrapper {
@@ -25,6 +24,10 @@
 
 .recommended-card {
   height: 240px;
+}
+
+.recommended-img {
+  width: 120px;
 }
 
 .recommended-button {

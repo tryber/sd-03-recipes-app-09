@@ -1,11 +1,19 @@
 import React from 'react';
+import { useState } from 'react';
 import Header from '../components/Header';
+import FiltersButtons from '../components/FiltersButtons';
+import DonePageContent from '../components/DonePageContent';
 
-const DonePage = () => (
-  <div>
-    <Header />
-    <h2>Página de Receitas Feitas</h2>
-  </div>
-);
+function DonePage() {
+  const [category, setCategory] = useState('all');
+
+  return (
+    <div>
+      <Header />
+      <FiltersButtons handleClick={setCategory} />
+      <DonePageContent category={category} />
+    </div>
+  );
+}
 
 export default DonePage;

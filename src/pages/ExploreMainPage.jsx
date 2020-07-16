@@ -1,15 +1,12 @@
 import React, { useContext } from 'react';
 import { useLocation, Link, useHistory } from 'react-router-dom';
-
 import RecipesContext from '../contexts/RecipesContext';
 import { fetchRandomDrink } from '../services/ServiceDrinks';
 import { fetchRandomMeal } from '../services/ServiceMeals';
-
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-
-function ExplorePageByForD() {
+function ExploreMainPage() {
   const { pathname } = useLocation();
   const history = useHistory();
   const { setMealsData, setDrinksData } = useContext(RecipesContext);
@@ -57,4 +54,4 @@ function ExplorePageByForD() {
   );
 }
 
-export default ExplorePageByForD;
+export default ExploreMainPage;

@@ -14,7 +14,7 @@ const copyLinkToClipboard = (pathname) => {
   setTimeout(() => {
     buttonWrapper.removeChild(copyAlert);
     buttonWrapper.appendChild(button);
-  }, 1000);
+  }, 2000);
 };
 
 const ShareButton = ({ testid, path }) => {

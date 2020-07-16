@@ -22,7 +22,7 @@ const RecommendationCard = (props) => {
       data-testid={`${index}-recomendation-card`}
       style={recommendationStyle(index)}
     >
-      <img src={image} alt={name} />
+      <img className="recommended-img" src={image} alt={name} />
       <p>{category}</p>
       <Link to={`${path}/${id}`}>
         <h4 data-testid={`${index}-recomendation-title`}>{name}</h4>
