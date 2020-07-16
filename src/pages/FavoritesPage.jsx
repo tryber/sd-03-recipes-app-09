@@ -10,6 +10,30 @@ import ShareButton from '../components/ShareButton';
 
 import './FavoritesPage.css';
 
+const createCards = (params) => {
+  return (
+    params.map(({ id, type, area, category, alcoholicOrNot, name, image }) => (
+      <div key={id} className="main-favorite-cards">
+        <div>
+          <Link to={(type === 'comida') ? `/comidas/${id}` : `/bebidas/${id}`}>
+            <img src={image} alt={name} className="img" />
+          </Link>
+        </div>
+        <div>
+          {(type === 'comida') ? <p>{area}-{category}</p> : <p>{alcoholicOrNot}</p>}
+          <Link to={(type === 'comida') ? `/comidas/${id}` : `/bebidas/${id}`}>
+            <p>{name}</p>
+          </Link>
+        </div>
+        <div>
+          <ShareButton />
+          <FavoriteButton id={id} handleFatherElement={setUpdateUnfavorite} />
+        </div>
+      </div>
+    ))
+  );
+};
+
 function FavoritesPage() {
   const [updateUnfavorite, setUpdateUnfavorite] = useState(false);
   const [filterRecipes, setFilterRecipes] = useState('All');
@@ -19,30 +43,6 @@ function FavoritesPage() {
     const favoriteList = JSON.parse(localStorage.getItem('favoriteRecipes'));
     setFavorites([...favoriteList]);
     setUpdateUnfavorite(false);
-  };
-
-  const createCards = (params) => {
-    return (
-      params.map(({ id, type, area, category, alcoholicOrNot, name, image }) => (
-        <div key={id} className="main-favorite-cards">
-          <div>
-            <Link to={(type === 'comida') ? `/comidas/${id}` : `/bebidas/${id}`}>
-              <img src={image} alt={name} className="img" />
-            </Link>
-          </div>
-          <div>
-            {(type === 'comida') ? <p>{area}-{category}</p> : <p>{alcoholicOrNot}</p>}
-            <Link to={(type === 'comida') ? `/comidas/${id}` : `/bebidas/${id}`}>
-              <p>{name}</p>
-            </Link>
-          </div>
-          <div>
-            <ShareButton />
-            <FavoriteButton id={id} handleFatherElement={setUpdateUnfavorite} />
-          </div>
-        </div>
-      ))
-    );
   };
 
   const mountFavoriteList = (filter) => {

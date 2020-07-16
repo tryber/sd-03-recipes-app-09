@@ -13,9 +13,7 @@ const isFavorite = (id) => {
 };
 
 const createFavoriteObject = (data, pathname) => {
-  console.log('data antes de filtrar:', data);
   const sortedData = pathname.includes('/comidas') ? sortMealData(data[0]) : sortDrinkData(data[0]);
-  console.log('data depois de filtrar:', sortedData);
   const favorite = {
     id: sortedData.id,
     type: sortedData.type,
@@ -46,7 +44,6 @@ const removeFavorite = (id, setIsFavorite, handler) => {
   const favorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
   if (favorites) {
     const filteredFavorites = favorites.filter((recipe) => recipe.id !== id);
-    console.log('favoritos depois de filtrar:', filteredFavorites);
     localStorage.setItem('favoriteRecipes', JSON.stringify(filteredFavorites));
     setIsFavorite(false);
   }
@@ -54,8 +51,7 @@ const removeFavorite = (id, setIsFavorite, handler) => {
   return setIsFavorite(false);
 };
 
-const FavoriteButton = (props) => {
-  const { id, handleFatherElement } = props;
+const FavoriteButton = ({ id, handleFatherElement }) => {
   const [favorite, setFavorite] = useState(isFavorite(id));
   const { pathname } = useLocation();
   return (
