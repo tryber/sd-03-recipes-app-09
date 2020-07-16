@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import Header from '../components/Header';
-import Footer from '../components/Footer';
 import FiltersButtons from '../components/FiltersButtons';
 
 import FavoriteButton from '../components/FavoriteButton';
@@ -90,7 +89,6 @@ function FavoritesPage() {
       {favorites && favorites.length >= 1
         ? mountFavoriteList(filterRecipes, favorites, setUpdateUnfavorite)
         : null}
-      <Footer />
     </div>
   );
 }
