@@ -24,7 +24,6 @@ const ShareButton = ({ testid, path }) => {
     <div id="share-button-wrapper">
       <button
         id="share-button"
-        data-testid="share-btn"
         type="button"
         onClick={() => copyLinkToClipboard(caminho)}
       >
